@@ -102,6 +102,12 @@ body {
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
         background: #eee;
         border: 1px solid white; }
+      body .container-fluid #main #side .pannel #accordion .input-group-sm {
+        padding: 0;
+        height: 10px; }
+      body .container-fluid #main #side .pannel #accordion .group #custom .wms {
+        background: pink;
+        height: 20px; }
       body .container-fluid #main #side .pannel .leg, body .container-fluid #main #side .pannel .tbl {
         display: none;
         padding: 0; }

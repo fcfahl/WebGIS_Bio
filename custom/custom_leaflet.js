@@ -5,7 +5,7 @@
 		[36.5, -20],
 		[68, 60]
 	]);
-	
+
 	// Leaflet.ZoomBox-master plugin
 	var control = L.control.zoomBox({
     modal: false,  // If false (default), it deactivates after each use.

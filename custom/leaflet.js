@@ -69,80 +69,98 @@
 
     // LULC layers (WMS)
 
-    // var host = 'http://localhost:8080/geoserver/LULC/wms';
-    //
-    // var NUTS0 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:NUTS0',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     styles: 'NUTS0',
-    //     zIndex: "100",
-    // });
-    //
-    // var GLC2000 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:GLC_00',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "30",
-    // });
-    //
-    // var Corine06 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:Corine_06',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "29",
-    // });
-    //
-    // var Atlas2006 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:Atlas_06',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "28",
-    //     minZoom: 8
-    // });
-    //
-    //
-    // var GlobCover = L.tileLayer.wms(host, {
-    //     layers: 'LULC:GlobCover_09',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "27",
-    // });
-    //
-    // var MODIS10 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:MODIS_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "26",
-    // });
-    //
-    // var CCI_ESA = L.tileLayer.wms(host, {
-    //     layers: 'LULC:CCIESA_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "25",
-    // });
-    //
-    // var GLand30 = L.tileLayer.wms(host, {
-    //     layers: 'LULC:GLand30_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "24",
-    //
-    // });
+    var host = 'http://localhost:8080/geoserver/LULC/wms';
+
+    var NUTS0 = L.tileLayer.wms(host, {
+        layers: 'LULC:NUTS0',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        styles: 'NUTS0',
+        zIndex: "100",
+    });
+
+    var GLC_00 = L.tileLayer.wms(host, {
+        layers: 'LULC:GLC_00',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "30",
+    });
+
+    var Corine_06 = L.tileLayer.wms(host, {
+        layers: 'LULC:Corine_06',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "29",
+    });
+
+    var Atlas_06 = L.tileLayer.wms(host, {
+        layers: 'LULC:Atlas_06',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "28",
+        minZoom: 8
+    });
+
+
+    var GlobCover_09 = L.tileLayer.wms(host, {
+        layers: 'LULC:GlobCover_09',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "27",
+    });
+
+    var MODIS_10 = L.tileLayer.wms(host, {
+        layers: 'LULC:MODIS_10',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "26",
+    });
+
+    var CCIESA_10 = L.tileLayer.wms(host, {
+        layers: 'LULC:CCIESA_10',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "25",
+    });
+
+    var GLand30_10 = L.tileLayer.wms(host, {
+        layers: 'LULC:GLand30_10',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        tiled:true,
+        zIndex: "24",
+
+    });
+
+
+    // WMS Custom
+
+    // var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
+
+    // var parser = new ol.format.WMSCapabilities(Custom_host);
+
+    // 	var CustomWMS = L.tileLayer.wms(Custom_host, {
+    // 		layers: 'GE.CARTAGEOLOGICA',
+    // 		format: 'image/png',
+    // 		transparent: true,
+    // 		version: '1.3.0',
+    // 		tiled:true,
+    //        srs:"EPSG:4326"
+    //    });
+
+    // console.log (CustomWMS);

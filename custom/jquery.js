@@ -15,7 +15,7 @@ $( document ).ready(function() {
       header: "> div > h3",
       heightStyle: "content",
       collapsible: true,
-      active: 1,
+      active: 2,
       icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" },
 
     })
@@ -148,5 +148,62 @@ $( document ).ready(function() {
              });
          }
      });
+
+
+    //  Add layers to map
+     $(".draggable input[type='checkbox']").on('click', function (event) {
+         layerClicked = window[event.target.value];
+         var ID = $(this).attr('value');
+
+         if (map.hasLayer(layerClicked)) {
+             map.removeLayer(layerClicked);
+             console.log('remove layer: ' + ID);
+         } else {
+             map.addLayer(layerClicked);
+             console.log('add layer: ' + ID);
+         };
+     });
+
+
+
+    //  Add custom WMS layers
+     $("#wms_btn").on('click', function () {
+        var name = $('#wms_txt').val();
+
+        // clip the name and remove the special characters to create an unique ID
+        var ID = name.slice(-10).replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+
+        var newWMS = $("<div>");
+        newWMS.addClass("wms");
+        $('.wms').attr('id', ID);
+        console.log('button: ' + ID);
+
+        // create HTML element
+        var html = [
+            '<div class="wms " id=" ' +  ID + '  ">',
+            '<li><input type="checkbox" value=" ' + ID  +  '  " checked="true" class="boxlayer">',
+            '<label for=" '    +  ID  +'   "><span> '    +  name  +   '</span></label>',
+            '</div>'
+        ].join("\n");
+
+        // append to DOM
+        $("#custom").append(html);
+
+
+
+        var CustomWMS = L.tileLayer.wms(name, {
+    		layers: 'GE.CARTAGEOLOGICA',
+    		format: 'image/png',
+    		transparent: true,
+    		version: '1.3.0',
+    		tiled:true,
+           srs:"EPSG:4326"
+       });
+
+        map.addLayer(CustomWMS);
+    });
+
+
+
 
 });
