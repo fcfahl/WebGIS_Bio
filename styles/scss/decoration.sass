@@ -1,0 +1,125 @@
+body
+    font: 20px Arial, Helvetica, sans-serif
+    color: white
+
+    h1
+        font-size: 2em
+    h2
+        font-size: 1.5em
+    h3
+        font-size: 1em
+    h4
+        font-size: 0.8em
+    h5
+        font-size: 0.6em
+
+    .container-fluid
+        header
+            background: $baseColor
+            text-align: center
+            border-bottom: solid white 0.5px
+
+            .logo
+                img
+                    padding-left: 5px
+                    height: 60px
+                    width: 65px
+                    // width: 200px
+
+
+        #main
+            background: $mainColor
+
+            #side
+                border-right: $lineDivision
+                color: $baseColor
+
+                .tabs
+                    border-bottom: $lineDivision
+
+                    .nav-link
+                        padding: 8px 8px
+                        min-width: 90px
+                        font-size: 0.7em
+                        text-align: center
+
+                .pannel
+                    h3
+                        font-size: 0.7em
+                    label
+                        font-size: 0.6em
+
+                    #accordion
+
+                        .ui-accordion, .ui-accordion-content
+                            padding: 10px
+                            margin: 0
+                            font-size: 1em
+                            vertical-align: middle
+
+                        .draggable
+                            vertical-align: middle
+
+                        .draggable  label
+                            vertical-align: middle
+
+                        .draggable:hover
+                            // margin-left: 5px
+                            box-shadow: 0 0 25px rgba(0, 0, 0, .6)
+                            background: #eee
+                            border: 1px solid rgba(255, 255, 255, 1)
+
+                    .leg, .tbl
+                        display: none
+                        padding: 0
+
+                        .panel-heading
+                            padding: 0
+                            border: $lineDivision
+                            background: #eee
+                            color: $groupColor
+
+                            .panel-title
+                                margin: 0px
+                            a
+                                // solution: http://bootsnipp.com/snippets/M2QRX
+                                padding: 10px 10px 10px 40px
+                                display: inline-block
+                                width: 100%
+                                background-color: #eee
+                                color: $baseColor
+                                position: relative
+                                text-decoration: none
+
+                            a:after
+                                font-family: "FontAwesome"
+                                content: "\f0da"
+                                position: absolute
+                                left: 10px
+                                font-size: 20px
+                                font-weight: 400
+                                top: 50%
+                                line-height: 1
+                                margin-top: -10px
+
+                        .panel-heading a.collapsed:after
+                            content: "\f0d7"
+
+                    .tbl
+                        display: none
+
+                .settings
+                    border-top: $lineDivision
+
+                    .button
+                        padding: 5px
+                        margin: 0 5px 0 5px
+                        font-size: 0.6em
+                        min-width: 100px
+                        border: none
+
+
+        footer
+            background: $baseColor
+            font-size: 0.45em
+            text-align: right

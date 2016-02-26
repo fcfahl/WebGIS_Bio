@@ -1,0 +1,130 @@
+$baseColor: #2B3856
+
+*
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+html, body
+    font: 20px Arial, Helvetica, sans-serif
+    width: 100%
+    height: 100%
+
+
+h1
+    font-size: 2em
+h2
+    font-size: 1.5em
+h3
+    font-size: 1em
+h4
+    font-size: 0.8em
+h5
+    font-size: 0.6em
+
+.hide
+    display none
+
+body
+    color: white
+
+    .container-fluid
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-content: stretch
+        align-items: stretch
+        width: 100%
+        height: 100%
+        padding: 0
+        margin: 0
+
+        header
+            background: $baseColor
+            text-align: center
+            border-bottom: solid white 0.5px
+            height: 70px
+            padding: 0
+            display: flex
+            align-items: center
+            align-content: space-around
+
+            .logo
+                img
+                    padding-left: 5px
+                    height: 60px
+                    width: 65px
+                    // width: 200px
+            .title
+                flex-grow: 1
+            .menu
+                color: white
+                list-style-type: none
+
+                a
+                    text-decoration: none
+                    display: block
+                    padding: 1em
+                    color: white
+                    font-size: 0.7em
+
+
+                .dropdown-item
+                    color: $baseColor
+
+                a:hover
+                    background: lighten(#2B3856, 10%)
+
+
+        .main
+            display: flex
+            flex-grow: 1
+            background: #eee
+            border-bottom: solid white 0.7px
+
+            .content
+                display: flex
+                flex-grow: 1
+                flex-direction: row
+
+
+                .side
+                    display: flex
+                    flex-direction: column
+                    border-right: solid white 0.5px
+                    width: 300px
+                    color: $baseColor
+
+                    .pannel
+                        flex-grow: 1
+
+                        .nav-link
+                            padding: 8px 8px
+                            min-width: 90px
+                            font-size: 0.7em
+                            text-align: center
+                    .settings
+                        display: flex
+                        flex-direction: row
+                        justify-content: center
+                        align-content: space-around
+                        align-items: center
+                        height: 40px
+                        border-top: solid white 0.5px
+
+                        .button
+                            padding: 10px
+                            margin: 0 5px 0 5px
+                            font-size: 0.6em
+                            min-width: 100px
+                            border: none
+
+
+                #map
+                    flex-grow: 1
+
+        footer
+            background: $baseColor
+            height: 15px
+            font-size: 0.45em
+            text-align: right

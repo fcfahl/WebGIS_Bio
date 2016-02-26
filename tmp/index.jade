@@ -1,0 +1,73 @@
+//output:index.html
+include custom/mixins
+
+doctype html
+
+html(lang="en")
+    head
+        title "Land Cover Maps of Europe"
+        meta(name="keywords" content=".....")
+        meta(name="author" content="Fernando Fahl")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(charset="utf-8")
+        
+        //- Bootstrap
+        link(rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css")
+        
+        // Custom CSS 
+        //- link(rel="stylesheet" type="text/css" href="styles/css/plugins.css")         
+        //- link(rel="stylesheet" type="text/css" href="styles/css/main.css")    
+
+    body
+        .container-fluid
+            header(class="navigation" role="banner")
+                .logo
+                    a(href="javascript:void(0)" class="logo")
+                        //- img(src="img/logo/logo-polimi.svg" alt="Logo Image")
+            
+                .title 
+                    h1 Land Cover Maps of Europe                    
+                .menu                    
+                    li.nav-item.dropdown 
+                        a(class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false") Options
+                        .dropdown-menu(aria-labelledby="Preview")
+                            +link('dropdown-item','#','Dropdown Link 1')
+                            +link('dropdown-item','#','Dropdown Link 2')
+                            +link('dropdown-item','#','Dropdown Link 3')
+                            
+                            
+            // Body  block
+            .main
+                .side
+                    <!-- Tabsl -->
+                    ul(id="clothing-nav" class="nav nav-tabs" role="tablist")
+                        +tabs('nav-item','nav-link active','layers','Layers','true')
+                        +tabs('nav-item','nav-link','legend','Legend','false')      
+                        +tabs('nav-item','nav-link','info','Medatada','false')                      
+                
+                    <!-- Content Panel -->
+                    #clothing-nav-content.tab-content
+                        .tab-pane.fade.in.active(role="tabpanel" id="layers" aria-labelledby="home-tab")
+                        p Welcome home! Click on the tabs to see the content change
+
+                    #clothing-nav-content.tab-content
+                        .tab-pane.fade(role="tabpanel" id="legend" aria-labelledby="legend-tab")
+                        p Welcome home! Click on the tabs to see the content change       
+                        
+                    #clothing-nav-content.tab-content
+                        .tab-pane.fade(role="tabpanel" id="info" aria-labelledby="info-tab")
+                        p Welcome home! Click on the tabs to see the content change                       
+                    
+                .map
+                    p ...
+                
+            footer
+                h5 footer
+                
+    
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")        
+        //- Bootstrap
+        //- script(src="libs/bootstrap4/tether.min.js")
+        //- script(src="libs/bootstrap4/bootstrap.min.js")
+        
+        script(src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js") 

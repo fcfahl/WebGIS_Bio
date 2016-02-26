@@ -1,0 +1,12 @@
+	 <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><img src="./images/icons/box-layered-16-000000.png"></i></a></li>
+                <li><a href="#legend" role="tab"><img src="./images/icons/list-16-000000.png"></i></a></li>
+                <li><a href="#information" role="tab"><img src="./images/icons/information-16-000000.png"></i></a></li>
+            </ul>
+			
+	         <ul role="tablist">
+                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+            </ul>
+        </div>

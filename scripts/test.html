@@ -1,0 +1,40 @@
+   <html>
+<head>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <title>title name here</title>
+  <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+  <div style="width:1000px; height:700px" id="map"></div>
+  <script>
+      var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }
+        );
+
+      //create map object
+      var map = new L.Map('map', {
+          center: [50.9, 3.9],
+          zoom: 10,
+          layers: [osm]
+      });
+
+      var geojsonLayer = new L.GeoJSON();
+
+      function getJson(data) {
+          console.log(data)
+          geojsonLayer.addData(data);
+      }
+
+      $.ajax({
+          url: `http://localhost:8080/geoserver/LULC/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=LULC:gent_diss&maxFeatures=100&outputFormat=application%2Fjson`,   
+          dataType: 'json',
+          jsonpCallback: 'getJson',
+          success: getJson
+      });
+
+      map.addLayer(geojsonLayer);
+      
+  </script>
+</body>
+</html>

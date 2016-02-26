@@ -1,0 +1,102 @@
+$baseColor: #2B3856
+
+*
+    margin: 0
+    padding: 0
+    overflow: hidden
+    box-sizing: border-box
+
+body
+    font-family: Arial, Helvetica, sans-serif
+    color: white
+    font-size: 16px
+
+h1
+    font-size: 2em
+
+h2
+    font-size: 1.5em
+
+h3
+    font-size: 1em
+
+h4
+    font-size: 0.8em
+
+h5
+    font-size: 0.6em
+
+.hide
+    display none
+
+.container-fluid
+    display: flex
+    flex-direction: column
+    height: 100vh
+    width: 100vw
+
+    header
+        background: $baseColor
+        color: white
+        text-align: center
+        display: flex
+        flex-direction: row
+        align-items: center
+        align-content: space-around
+        border-bottom: solid white 0.5px
+
+
+        .logo
+            img
+                padding: 5px
+                height: 80px
+                width: 80px
+
+        .texto
+            padding: 0.2em
+            text-align: left
+
+        .title
+            flex-grow: 5
+
+        .menu
+            .navigation
+                display: flex
+                flex-wrap: wrap
+                flex-direction: row
+
+            a
+                text-decoration: none
+                display: block
+                padding: 1em
+                color: white
+                font-size: 0.8em
+
+            a:hover
+                background: lighten(#2B3856, 10%)
+
+
+    .main
+        display: flex
+        flex-grow: 1
+        background: #eee
+        border-bottom: solid white 0.7px
+
+        .side
+            width: 300px
+            border-right: solid white 0.5px
+
+
+
+            .nav-link
+                padding: 8px 8px
+                min-width: 93px
+
+
+        .map
+            flex-grow: 5
+
+
+    footer
+        background: $baseColor
+        height: 15px
