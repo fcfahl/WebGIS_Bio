@@ -105,9 +105,13 @@ body {
       body .container-fluid #main #side .pannel #accordion .input-group-sm {
         padding: 0;
         height: 10px; }
-      body .container-fluid #main #side .pannel #accordion .group #custom .wms {
-        background: pink;
-        height: 20px; }
+      body .container-fluid #main #side .pannel #accordion .group #custom {
+        font-size: 0.7em; }
+        body .container-fluid #main #side .pannel #accordion .group #custom .wms {
+          background: pink;
+          height: 20px; }
+        body .container-fluid #main #side .pannel #accordion .group #custom .list-group-item {
+          font-size: 0.7em; }
       body .container-fluid #main #side .pannel .leg, body .container-fluid #main #side .pannel .tbl {
         display: none;
         padding: 0; }

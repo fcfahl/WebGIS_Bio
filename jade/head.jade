@@ -5,20 +5,22 @@ head
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(charset="utf-8")
             
-    //- Jquery
+    // Jquery
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")  
+    // Angularjs    
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js")  
     
-    //- Bootstrap (must be before Jquery UI)
+    // Bootstrap (must be before Jquery UI)
     script(src="libs/bootstrap4/tether.min.js")        
     script(src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js") 
     link(rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css")
                         
-    //- Jquery UI
+    // Jquery UI
     script(src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js") 
     link(rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.min.css")
     link(rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.theme.min.css")
     
-    //Font Awesome CSS
+    // Font Awesome CSS
     link(rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
 
     // leaflet
@@ -29,7 +31,12 @@ head
     //- link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")   
     //- 
     
-    //- leaflet plugins
+    // Openlayers - library to parse getCapabilities
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.0/ol.js")   
+
+    
+    
+    // leaflet plugins
     +addPlugin('leaflet-providers-master/leaflet-providers.js')
     
     +addPlugin('sidebar-v2-master/js/leaflet-sidebar.js')

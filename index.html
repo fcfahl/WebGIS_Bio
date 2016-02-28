@@ -11,18 +11,26 @@
     <meta name="author" content="Fernando Fahl">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <!-- Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <!-- Angularjs    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"> </script>
+    <!-- Bootstrap (must be before Jquery UI)-->
     <script src="libs/bootstrap4/tether.min.js">       </script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"> </script>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <!-- Jquery UI-->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.theme.min.css">
-    <!--Font Awesome CSS-->
+    <!-- Font Awesome CSS-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- leaflet-->
     <script src="libs/leaflet_V0.7.7/leaflet.js">  </script>
     <link rel="stylesheet" type="text/css" href="libs/leaflet_V0.7.7/leaflet.css">
+    <!-- Openlayers - library to parse getCapabilities-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.0/ol.js">  </script>
+    <!-- leaflet plugins-->
     <script src="libs/plugins/leaflet-providers-master/leaflet-providers.js"> </script>
     <script src="libs/plugins/sidebar-v2-master/js/leaflet-sidebar.js"> </script>
     <link rel="stylesheet" href="libs/plugins/sidebar-v2-master/css/leaflet-sidebar_CUSTOM.css"/>
@@ -139,6 +147,9 @@
                       <div class="input-group input-group-sm">
                         <input type="text" id="wms_txt" class="form-control"><span class="input-group-btn">
                           <button type="button" id="wms_btn" class="btn btn-primary btn"><span aria-hidden="true" class="glyphicon glyphicon-search">Add</span></button></span>
+                      </div>
+                      <div id="wmsList">
+                        <ul class="list-group"></ul>
                       </div>
                     </div>
                   </div>
