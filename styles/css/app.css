@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -50,5 +51,113 @@ html, body {
         flex-grow: 1; }
     html .container-fluid footer, body .container-fluid footer {
       height: 15px; }
+
+span {
+  display: inline-block; }
+
+body {
+  font: 20px Arial, Helvetica, sans-serif;
+  color: white; }
+  body h1 {
+    font-size: 2em; }
+  body h2 {
+    font-size: 1.5em; }
+  body h3 {
+    font-size: 1em; }
+  body h4 {
+    font-size: 0.8em; }
+  body h5 {
+    font-size: 0.6em; }
+  body .container-fluid header {
+    background: #2B3856;
+    text-align: center;
+    border-bottom: solid white 0.5px; }
+    body .container-fluid header .logo img {
+      padding-left: 5px;
+      height: 60px;
+      width: 65px; }
+  body .container-fluid #main {
+    background: #eee; }
+    body .container-fluid #main #side {
+      border-right: solid white 0.5px;
+      color: #2B3856; }
+      body .container-fluid #main #side .tabs {
+        border-bottom: solid white 0.5px; }
+        body .container-fluid #main #side .tabs .nav-link {
+          padding: 8px 8px;
+          min-width: 90px;
+          font-size: 0.7em;
+          text-align: center; }
+      body .container-fluid #main #side .pannel h3 {
+        font-size: 0.7em; }
+      body .container-fluid #main #side .pannel label {
+        font-size: 0.7em; }
+      body .container-fluid #main #side .pannel #accordion .ui-accordion, body .container-fluid #main #side .pannel #accordion .ui-accordion-content {
+        padding: 10px;
+        margin: 0;
+        font-size: 1em;
+        vertical-align: middle; }
+      body .container-fluid #main #side .pannel #accordion .draggable {
+        vertical-align: middle; }
+      body .container-fluid #main #side .pannel #accordion .draggable label {
+        vertical-align: middle; }
+      body .container-fluid #main #side .pannel #accordion .draggable:hover {
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+        background: #eee;
+        border: 1px solid white; }
+      body .container-fluid #main #side .pannel #accordion .input-group-sm {
+        padding: 0;
+        height: 10px; }
+      body .container-fluid #main #side .pannel #accordion .group #custom {
+        font-size: 0.7em; }
+        body .container-fluid #main #side .pannel #accordion .group #custom .wms {
+          background: pink;
+          height: 20px; }
+        body .container-fluid #main #side .pannel #accordion .group #custom .list-group-item {
+          font-size: 0.7em; }
+      body .container-fluid #main #side .pannel .leg, body .container-fluid #main #side .pannel .tbl {
+        display: none;
+        padding: 0; }
+        body .container-fluid #main #side .pannel .leg .panel-heading, body .container-fluid #main #side .pannel .tbl .panel-heading {
+          padding: 0;
+          border: solid white 0.5px;
+          background: #eee;
+          color: #555555; }
+          body .container-fluid #main #side .pannel .leg .panel-heading .panel-title, body .container-fluid #main #side .pannel .tbl .panel-heading .panel-title {
+            margin: 0px; }
+          body .container-fluid #main #side .pannel .leg .panel-heading a, body .container-fluid #main #side .pannel .tbl .panel-heading a {
+            padding: 10px 10px 10px 40px;
+            display: inline-block;
+            width: 100%;
+            background-color: #eee;
+            color: #2B3856;
+            position: relative;
+            text-decoration: none; }
+          body .container-fluid #main #side .pannel .leg .panel-heading a:after, body .container-fluid #main #side .pannel .tbl .panel-heading a:after {
+            font-family: "FontAwesome";
+            content: "";
+            position: absolute;
+            left: 10px;
+            font-size: 20px;
+            font-weight: 400;
+            top: 50%;
+            line-height: 1;
+            margin-top: -10px; }
+        body .container-fluid #main #side .pannel .leg .panel-heading a.collapsed:after, body .container-fluid #main #side .pannel .tbl .panel-heading a.collapsed:after {
+          content: ""; }
+      body .container-fluid #main #side .pannel .tbl {
+        display: none; }
+      body .container-fluid #main #side .settings {
+        border-top: solid white 0.5px; }
+        body .container-fluid #main #side .settings .button {
+          padding: 5px;
+          margin: 0 5px 0 5px;
+          font-size: 0.6em;
+          min-width: 100px;
+          border: none; }
+  body .container-fluid footer {
+    background: #2B3856;
+    font-size: 0.45em;
+    text-align: right; }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,6 +1,6 @@
     // zoom configuration
     var map = L.map('map').setView([56, 20]);
-    console.log('map:' + map)
+    // console.log('map:' + map)
 
 	map.fitBounds([
 		[36.5, -20],

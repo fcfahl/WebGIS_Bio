@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.theme.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/font-awesome-4.5.0/css/font-awesome.min.css">
     <!-- leaflet-->
     <script src="libs/leaflet_V0.7.7/leaflet.js">  </script>
     <link rel="stylesheet" type="text/css" href="libs/leaflet_V0.7.7/leaflet.css">
@@ -155,6 +155,7 @@
                                 </div>
                                 <div class="wmsButton">
                                   <button type="button" id="wms_submit" class="btn btn-primary cleanButton">Submit</button>
+                                  <button type="button" data-dismiss="modal" class="btn btn-secondary ">Close</button>
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -162,8 +163,8 @@
                                   <ul class="list-group"></ul>
                                 </div>
                                 <div class="wmsButtons">
-                                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                                  <button type="button" id="wms_add" class="btn btn-primary">Add Selected Layers</button>
+                                  <button type="button" data-dismiss="modal" class="btn btn-secondary ">Close</button>
+                                  <button type="button" id="wms_add" data-dismiss="modal" class="btn btn-primary">Add Selected Layers</button>
                                 </div>
                               </div>
                             </div>
@@ -180,136 +181,10 @@
               </div>
               <div role="tabpanel" id="legend" aria-labelledby="legend-tab" class="tab-pane fade">
                 <div id="legend">
-                                  <div id="leg_GLC_00" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GLC_00" rel="0" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GLC_00" aria-expanded="true" aria-controls="leg_GLC_00" class="accordion-toggle">Global Land Cover (2000)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GLC_00" role="tabpanel" aria-labelledby="leg_GLC_00" class="panel-collapse collapse in"><img src="img/GLC_00.svg" alt="Global Land Cover (2000)"></div>
-                                  </div>
-                                  <div id="leg_Corine_06" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_Corine_06" rel="1" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_Corine_06" aria-expanded="true" aria-controls="leg_Corine_06" class="accordion-toggle">Corine (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_Corine_06" role="tabpanel" aria-labelledby="leg_Corine_06" class="panel-collapse collapse in"><img src="img/Corine_06.svg" alt="Corine (2006)"></div>
-                                  </div>
-                                  <div id="leg_Atlas_06" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_Atlas_06" rel="2" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_Atlas_06" aria-expanded="true" aria-controls="leg_Atlas_06" class="accordion-toggle">Urban Atlas (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_Atlas_06" role="tabpanel" aria-labelledby="leg_Atlas_06" class="panel-collapse collapse in"><img src="img/Atlas_06.svg" alt="Urban Atlas (2006)"></div>
-                                  </div>
-                                  <div id="leg_GlobCover_09" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GlobCover_09" rel="3" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GlobCover_09" aria-expanded="true" aria-controls="leg_GlobCover_09" class="accordion-toggle">GlobCover (2009)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GlobCover_09" role="tabpanel" aria-labelledby="leg_GlobCover_09" class="panel-collapse collapse in"><img src="img/GlobCover_09.svg" alt="GlobCover (2009)"></div>
-                                  </div>
-                                  <div id="leg_MODIS_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_MODIS_10" rel="4" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_MODIS_10" aria-expanded="true" aria-controls="leg_MODIS_10" class="accordion-toggle">MODIS (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_MODIS_10" role="tabpanel" aria-labelledby="leg_MODIS_10" class="panel-collapse collapse in"><img src="img/MODIS_10.svg" alt="MODIS (2010)"></div>
-                                  </div>
-                                  <div id="leg_CCIESA_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_CCIESA_10" rel="5" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_CCIESA_10" aria-expanded="true" aria-controls="leg_CCIESA_10" class="accordion-toggle">Land Cover CCI (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_CCIESA_10" role="tabpanel" aria-labelledby="leg_CCIESA_10" class="panel-collapse collapse in"><img src="img/CCIESA_10.svg" alt="Land Cover CCI (2010)"></div>
-                                  </div>
-                                  <div id="leg_GLand30_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GLand30_10" rel="6" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GLand30_10" aria-expanded="true" aria-controls="leg_GLand30_10" class="accordion-toggle">Global Land Cover 30m (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GLand30_10" role="tabpanel" aria-labelledby="leg_GLand30_10" class="panel-collapse collapse in"><img src="img/GLand30_10.svg" alt="Global Land Cover 30m (2010)"></div>
-                                  </div>
                 </div>
               </div>
               <div role="tabpanel" id="info" aria-labelledby="info-tab" class="tab-pane fade">
                 <div id="tables">
-                                  <div id="tbl_GLC_00" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_GLC_00" rel="0" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GLC_00" aria-expanded="true" aria-controls="tbl_GLC_00">Global Land Cover (2000)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_GLC_00" role="tabpanel" aria-labelledby="tbl_GLC_00" class="panel-collapse collapse in">
-                                      <iframe src="html/GLC_00.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_Corine_06" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_Corine_06" rel="1" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_Corine_06" aria-expanded="true" aria-controls="tbl_Corine_06">Corine (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_Corine_06" role="tabpanel" aria-labelledby="tbl_Corine_06" class="panel-collapse collapse in">
-                                      <iframe src="html/Corine_06.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_Atlas_06" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_Atlas_06" rel="2" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_Atlas_06" aria-expanded="true" aria-controls="tbl_Atlas_06">Urban Atlas (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_Atlas_06" role="tabpanel" aria-labelledby="tbl_Atlas_06" class="panel-collapse collapse in">
-                                      <iframe src="html/Atlas_06.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_GlobCover_09" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_GlobCover_09" rel="3" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GlobCover_09" aria-expanded="true" aria-controls="tbl_GlobCover_09">GlobCover (2009)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_GlobCover_09" role="tabpanel" aria-labelledby="tbl_GlobCover_09" class="panel-collapse collapse in">
-                                      <iframe src="html/GlobCover_09.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_MODIS_10" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_MODIS_10" rel="4" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_MODIS_10" aria-expanded="true" aria-controls="tbl_MODIS_10">MODIS (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_MODIS_10" role="tabpanel" aria-labelledby="tbl_MODIS_10" class="panel-collapse collapse in">
-                                      <iframe src="html/MODIS_10.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_CCIESA_10" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_CCIESA_10" rel="5" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_CCIESA_10" aria-expanded="true" aria-controls="tbl_CCIESA_10">Land Cover CCI (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_CCIESA_10" role="tabpanel" aria-labelledby="tbl_CCIESA_10" class="panel-collapse collapse in">
-                                      <iframe src="html/CCIESA_10.html"></iframe>
-                                    </div>
-                                  </div>
-                                  <div id="tbl_GLand30_10" role="tablist" aria-multiselectable="true" class="tbl">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="tbl_GLand30_10" rel="6" class="panel-heading collapsed">
-                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GLand30_10" aria-expanded="true" aria-controls="tbl_GLand30_10">Global Land Cover 30m (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="tbl_col_GLand30_10" role="tabpanel" aria-labelledby="tbl_GLand30_10" class="panel-collapse collapse in">
-                                      <iframe src="html/GLand30_10.html"></iframe>
-                                    </div>
-                                  </div>
                 </div>
               </div>
             </div>
@@ -326,14 +201,14 @@
       </footer>
     </div>
     <!-- Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <script src="libs/jquery/jquery-2.2.1.min.js"> </script>
     <!-- Angularjs    -->
     
     <!-- Jquery UI-->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"> </script>
+    <script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"> </script>
     <!-- Bootstrap (must be before Jquery UI)-->
     <script src="libs/bootstrap4/tether.min.js">       </script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"> </script>
+    <script src="libs/bootstrap4/bootstrap.min.js"> </script>
     <!-- leaflet-->
     
     <!-- leaflet plugins-->

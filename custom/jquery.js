@@ -1,5 +1,14 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    // console.log( "ready!" );
+
+    function checkDuplicateIDs(){
+        $('[id]').each(function(){
+          var ids = $('[id="'+this.id+'"]');
+          if(ids.length>1 && ids[0]==this)
+            console.warn('Multiple IDs #'+this.id);
+        });
+    };
+
 
     // Uncheck the checkboxes (problem in Firefox)
     $('input:checkbox').removeAttr('checked');
@@ -36,7 +45,7 @@ $( document ).ready(function() {
     function expand() {
         // Getter
         var label = $( "#expand").button( "option", "label" );
-        console.log(" button expand: " + label );
+        // console.log(" button expand: " + label );
 
         if(label === "Expand All") {
             $('.panel-collapse:not(".in")').collapse('show');
@@ -56,7 +65,7 @@ $( document ).ready(function() {
 
             // Expand-collapse legend option
             $('.panel-collapse:not(".in")').collapse('show');
-            console.log( "expand button" );
+            // console.log( "expand button" );
 
         }
         else {
@@ -90,7 +99,7 @@ $( document ).ready(function() {
          if(this.checked) {
              $(leg).show();
              $(tbl).show();
-             console.log( leg );
+            //  console.log( leg );
 
         }else{
             $(leg).hide();
@@ -153,10 +162,10 @@ $( document ).ready(function() {
 
          if (map.hasLayer(layerClicked)) {
              map.removeLayer(layerClicked);
-             console.log('remove layer: ' + ID);
+            //  console.log('remove layer: ' + ID);
          } else {
              map.addLayer(layerClicked);
-             console.log('add layer: ' + ID);
+            //  console.log('add layer: ' + ID);
          };
      });
 
@@ -165,8 +174,185 @@ $( document ).ready(function() {
          $(".wms_candidates").remove();
     });
 
+    //  Hide buttons in Modal
+    $("#modalButton" ).on('click', function () {
+        $(".modal-footer").hide();
+        $(".modal-body").show();
+   });
+
+   function createHTML (classN, ID, name, title, ref){
+       // create HTML element
+
+       var open_div = '<div id="' +  ID + '" class="' +  classN + '"  >',
+            li =  '<li><input type="checkbox" value="' + title  + '" autocomplete="off" data-layer="' + name  + '"data-title="' + title  + '" class="wmsBox">',
+            label = '<label for="'  +  ID  + '"><span>'  +  title  +  '</span></label>',
+            // include a hidden class to hide the delete button
+            icon = '<a class="wms_delete" href="'  +  ref  + '"><span class="glyphicon glyphicon-remove-circle wms_delete hidden-xs"><br></span></a>';
+            colse_div = '</div>',
+            html = open_div + li + label + icon + colse_div;
+
+       return html;
+
+   };
+
+   function createGetMap () {
+
+    //    http://localhost:8080/geoserver/LULC/wms?service=WMS&version=1.1.0&request=
+    //    GetMap&layers=LULC:MODIS_10&styles=
+    //    &bbox=712574.95802314,524469.995111959,7625664.001367271,7893458.75152161
+    //    &width=720&height=768&srs=EPSG:3035&format=application/openlayers
+       //
+    //    var getMap = {
+       //
+    //    http://localhost:8080/geoserver/wms?
+    //    request=GetMap
+    //    &service=WMS
+    //    &version=1.1.1
+    //    &layers=topp%3Astates
+    //    &styles=population
+    //    &srs=EPSG%3A4326
+    //    &bbox=-145.15104058007,21.731919794922,-57.154894212888,58.961058642578&
+    //    &width=780
+    //    &height=330
+    //    &format=image%2Fpng
+    // };
+
+   };
+
+     // Openlayers XML parser
+       function loadDoc(xml) {
+           var formatter = new  ol.format.WMSCapabilities();
+           var endpoint = xml;
+           var layers = [];
+           var http = new XMLHttpRequest();
+         // async call to geoserver (I'm using angular)
+       //   $http.get(endpoint);
+
+             // use the tool to parse the data
+             var response = (formatter.read(xml));
+
+             // this object contains all the GetCapabilities data
+             var capability = response.capability;
+             console.log("ol3: " + response);
+
+             // I want a list of names to use in my queries
+            //  for(var i = 0; i < capability.layers.length; i ++){
+            //      layers.push(capability.layers[i].name);
+            //  };
+
+
+// nao esta funcionando
+    };
+
+
+   function parseVersion (xml, layers) {
+
+       loadDoc(xml)
+
+       $(xml).find('Capability').each(function()
+        {
+            var  name = $(this).children('Get').text().trim();
+            // console.log($(this));
+            // console.log(name);
+        }); // end loop
+
+   };
+
+   function parseLayers (xml, layers) {
+       //   create an object to store the layer data
+       var jsonObj = [];
+       $(xml).find('Layer').each(function()
+        {
+            var   name = $(this).children('Name').text().trim(),
+                    title = $(this).children('Title').text().trim(),
+                    SRS = $(this).children('SRS').text().trim(),
+                    ID = "wms_" + title,
+                    ref="#" + ID;
+
+            // Ignore blank strings
+            if (name !== null && name !== ""  )
+            {
+                var item = {
+                    name: name,
+                    title: title,
+                    ID: ID,
+                    ref: ref,
+                    SRS: SRS,
+                }
+                jsonObj.push(item);
+
+            } //end if
+        }); // end loop
+
+        return jsonObj;
+
+   };
+
+   // Parse GetCapabilities
+   function parseCapabilities (xml, layers)
+   {
+
+       layerList = parseLayers (xml, layers);
+       version = parseVersion (xml, layers);
+
+        // loop through the object  data
+        $.each(layerList, function (index, obj) {
+            // console.log(' SRS ' + layerList[index].SRS)
+            var   name = layerList[index].name,
+                    title = layerList[index].title,
+                    ID = layerList[index].ID,
+                    ref= layerList[index].ref;
+
+            var html = createHTML("wms_candidates",ID,name,title,ref);
+            $(".wmsList").append(html);
+          });
+
+    };
+
+    //  Add selected wms layers to Pannel
+     $("#wms_add" ).on('click', function ()
+     {
+
+       var checkedVals = $('.wmsBox:checkbox:checked').map(function() {
+           return this.value;
+       }).get();
+
+
+       $.each( checkedVals, function( index, value ){
+
+        //    Clone selected wms layers to pannel
+           var   ID = "#wms_" + value;
+            $('.glyphicon').removeClass( "hidden-xs" ).closest('span'); //remove hidden class to show the delete icon
+            $( ID ).clone().appendTo( ".wms_custom" );
+
+            // console.log( "ID: " + ID);
+
+
+
+
+       });
+            // clean the wmlist to avoid duplicated IDs
+              $(".wmsList" ).empty();
+              // check duplicated ids
+              checkDuplicateIDs();
+    });
+
+        // remove wms custon layer using delete icon
+        $('.wms_custom' ).on('click', '.wms_delete', function () {
+
+            var href = $(this).attr('href');
+            $(href).remove();
+            console.log( "remove " + href );
+        });
+
+
     //  MODAL: add custom WMS layers
      $("#wms_submit").on('click', function () {
+
+        //  Show footer after submit button is clicked
+        $(".modal-body").hide();
+        $(".modal-footer").show();
+
         var wmsLink = $('#wms_capability').val();
         console.log('wmsLink: ' + wmsLink);
 
@@ -181,76 +367,25 @@ $( document ).ready(function() {
         // Get Layer names
         // http://fuzzytolerance.info/blog/2012/03/06/2012-03-06-parsing-wms-getcapabilities-with-jquery/
         $.ajax({
-              type: "GET",
-        		url: wmsLink,
-        		dataType: "xml",
-        		success: function(xml) {
-
-         			$(xml).find('Layer').each(function(){
-         				if ($(this).children("Name").text() != null) {
-                          var name = $(this).children("Title").text();
-                          var ID = "wms_" + name;
-                        //   console.log( name);
-
-                        // Create layer name list
-                        if ( name  !== "" ){
-                            // create HTML element
-
-                            var html = [
-                                '<div class="wms_candidates" >',
-                                '<li><input id="' +  ID + '" type="checkbox" value="' + name  + '" autocomplete="off" class="wmsTmp">',
-                                '<label for="'  +  ID  + '"><span>'  +  name  +  '</span></label>',
-                                '</div>'
-                            ].join("\n");
-
-                             $(".wmsList").append(html);
-                        }
-
-                        // Add layers to map
-                        $("#wms_add" ).on('click', function () {
-
-                            // var names = [];
-                            $('.wms_candidates input:checked').each(function() {
-                                var layer = $(this).val()
-                                 var ID = "wms_" + name;
-                                // names.push($(this).val());
-                                console.log( "selected: " + layer);
-
-                                var html = [
-                                    '<div class="wms_final" >',
-                                    '<li><input id="' +  ID + '" type="checkbox" value="' + name  + '" autocomplete="off" class="wmsBox">',
-                                    '<label for="'  +  ID  + '"><span>'  +  name  +  '</span></label>',
-                                    '</div>'
-                                ].join("\n");
-
-                                 $(".wms_custom").append(html);
-
-                            });
-                        });
-                            /* we join the array separated by the comma */
-                        	// var selected;
-                        	// selected = names.join(',') + ",";
-                            //
-                        	// /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
-                        	// if(selected.length > 1){
-                        	// 	 console.log( "selected: " + selected);
-                        	// }else{
-                        	// 	alert("Please at least one of the checkbox");
-                        	// }
-
-
-         				}
-        			});
-        		}
+            type: "GET",
+    		url: wmsLink,
+    		dataType: "xml",
+    		success: function(xml) { parseCapabilities (xml, layers);}
         	});
 
     });
 
 
-
-
-
-
+    /* we join the array separated by the comma */
+    // var selected;
+    // selected = names.join(',') + ",";
+    //
+    // /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
+    // if(selected.length > 1){
+    // 	 console.log( "selected: " + selected);
+    // }else{
+    // 	alert("Please at least one of the checkbox");
+    // }
 
 
 
@@ -376,34 +511,8 @@ $( document ).ready(function() {
                 //         });
                 //      };
 
-        //     function loadDoc() {
-        //         var formatter = new  ol.format.WMSCapabilities();
-        //         var endpoint = Custom_host;
-        //         var layers = [];
-        //         var http = new XMLHttpRequest();
-        //       // async call to geoserver (I'm using angular)
-        //     //   $http.get(endpoint);
-        //
-        //       http.open("GET", Custom_host, true);
-        //
-        //       success(function(data, status, headers, config) {
-        //
-        //           // use the tool to parse the data
-        //           var response = (formatter.read(data));
-        //
-        //           // this object contains all the GetCapabilities data
-        //           var capability = response.capability;
-        //
-        //           // I want a list of names to use in my queries
-        //           for(var i = 0; i < capability.layers.length; i ++){
-        //               layers.push(capability.layers[i].name);
-        //           }
-        //       }).
-        //
-        //       error(function(data, status, headers, config) {
-        //           alert("terrible error logging..");
-        //       });
-        //
-        // }
-        //     loadDoc()
+
+
+
+
 });
