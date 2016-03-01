@@ -47,7 +47,6 @@ $( document ).ready(function() {
         }
     };
 
-
     // Expand All button
     $( "#expand" ).button().on( "click", function() {
         var label = $(this).button( "option", "label" );
@@ -72,7 +71,6 @@ $( document ).ready(function() {
      });
 
     expand()
-
 
      // Setting button
      $( "#setting" ).button().on( "click", function() {
@@ -118,7 +116,6 @@ $( document ).ready(function() {
              .appendTo($tblCache);
      };
 
-
      // Drag and Drop layers
      $( "#lulc" ).sortable({
 
@@ -149,7 +146,6 @@ $( document ).ready(function() {
          }
      });
 
-
     //  Add layers to map
      $(".draggable input[type='checkbox']").on('click', function (event) {
          layerClicked = window[event.target.value];
@@ -164,44 +160,116 @@ $( document ).ready(function() {
          };
      });
 
+     // clear the layer name list on Modal
+     $(".cleanButton" ).on('click', function () {
+         $(".wms_candidates").remove();
+    });
 
-
-    //  Add custom WMS layers
-     $("#wms_btn").on('click', function () {
-        var name = $('#wms_txt').val();
+    //  MODAL: add custom WMS layers
+     $("#wms_submit").on('click', function () {
+        var wmsLink = $('#wms_capability').val();
+        console.log('wmsLink: ' + wmsLink);
 
         // clip the name and remove the special characters to create an unique ID
-        var ID = name.slice(-10).replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+        // var ID = wmsLink.slice(-10).replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
 
-        var newWMS = $("<div>");
-        newWMS.addClass("wms");
-        $('.wms').attr('id', ID);
-        console.log('button: ' + ID);
+        // var newWMS = $("<div>");
+        // newWMS.addClass("wms");
+        // $('.wms').attr('id', ID);
+        // console.log('button: ' + ID);
 
-        // create HTML element
-        var html = [
-            '<div class="wms " id=" ' +  ID + '  ">',
-            '<li><input type="checkbox" value=" ' + ID  +  '  " checked="true" class="boxlayer">',
-            '<label for=" '    +  ID  +'   "><span> '    +  name  +   '</span></label>',
-            '</div>'
-        ].join("\n");
+        // Get Layer names
+        // http://fuzzytolerance.info/blog/2012/03/06/2012-03-06-parsing-wms-getcapabilities-with-jquery/
+        $.ajax({
+              type: "GET",
+        		url: wmsLink,
+        		dataType: "xml",
+        		success: function(xml) {
+
+         			$(xml).find('Layer').each(function(){
+         				if ($(this).children("Name").text() != null) {
+                          var name = $(this).children("Title").text();
+                          var ID = "wms_" + name;
+                        //   console.log( name);
+
+                        // Create layer name list
+                        if ( name  !== "" ){
+                            // create HTML element
+
+                            var html = [
+                                '<div class="wms_candidates" >',
+                                '<li><input id="' +  ID + '" type="checkbox" value="' + name  + '" autocomplete="off" class="wmsTmp">',
+                                '<label for="'  +  ID  + '"><span>'  +  name  +  '</span></label>',
+                                '</div>'
+                            ].join("\n");
+
+                             $(".wmsList").append(html);
+                        }
+
+                        // Add layers to map
+                        $("#wms_add" ).on('click', function () {
+
+                            // var names = [];
+                            $('.wms_candidates input:checked').each(function() {
+                                var layer = $(this).val()
+                                 var ID = "wms_" + name;
+                                // names.push($(this).val());
+                                console.log( "selected: " + layer);
+
+                                var html = [
+                                    '<div class="wms_final" >',
+                                    '<li><input id="' +  ID + '" type="checkbox" value="' + name  + '" autocomplete="off" class="wmsBox">',
+                                    '<label for="'  +  ID  + '"><span>'  +  name  +  '</span></label>',
+                                    '</div>'
+                                ].join("\n");
+
+                                 $(".wms_custom").append(html);
+
+                            });
+                        });
+                            /* we join the array separated by the comma */
+                        	// var selected;
+                        	// selected = names.join(',') + ",";
+                            //
+                        	// /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
+                        	// if(selected.length > 1){
+                        	// 	 console.log( "selected: " + selected);
+                        	// }else{
+                        	// 	alert("Please at least one of the checkbox");
+                        	// }
+
+
+         				}
+        			});
+        		}
+        	});
+
+    });
+
+
+
+
+
+
+
+
 
         // append to DOM
-        $("#custom").append(html);
+        // $("#custom").append(html);
 
 
 
-        var CustomWMS = L.tileLayer.wms(name, {
-    		layers: 'GE.CARTAGEOLOGICA',
-    		format: 'image/png',
-    		transparent: true,
-    		version: '1.3.0',
-    		tiled:true,
-            srs:"EPSG:4326"
-       });
+    //     var CustomWMS = L.tileLayer.wms(name, {
+    // 		layers: 'GE.CARTAGEOLOGICA',
+    // 		format: 'image/png',
+    // 		transparent: true,
+    // 		version: '1.3.0',
+    // 		tiled:true,
+    //         srs:"EPSG:4326"
+    //    });
 
-        map.addLayer(CustomWMS);
-    });
+        // map.addLayer(CustomWMS);
+    // });
 
 
     // var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
@@ -259,7 +327,7 @@ $( document ).ready(function() {
         //       console.log(data);
         //     });
 
-        var Custom_host = "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Zone_sismogenetiche_ZS9.map&service=wms&request=getCapabilities&version=1.3.0"
+        // var Custom_host = "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Zone_sismogenetiche_ZS9.map&service=wms&request=getCapabilities&version=1.3.0"
 
             // https://api.jquery.com/jquery.get/
             // var jqxhr = $.get( Custom_host, function( data, status, headers ) {
@@ -276,7 +344,7 @@ $( document ).ready(function() {
             //         console.log( "finished" );
             //       });
 
-                var Custom_host = "http://localhost:8080/geoserver/wms?service=wms&version=1.1.1&request=GetCapabilities"
+                // var Custom_host = "http://localhost:8080/geoserver/wms?service=wms&version=1.1.1&request=GetCapabilities"
 
               // http://fuzzytolerance.info/blog/2012/03/06/2012-03-06-parsing-wms-getcapabilities-with-jquery/
             //   $.ajax({
@@ -294,19 +362,19 @@ $( document ).ready(function() {
             //   		}
             //   	});
 
-                $.ajax({
-                    type: "GET",
-                    url: Custom_host,
-                    dataType: "xml",
-                    success: parseXml
-                });
-
-                function parseXml(xml){
-                    $(xml).find("Capability").each(function(){
-                        var name = $(this).text();
-                        console.log( name);
-                        });
-                     };
+                // $.ajax({
+                //     type: "GET",
+                //     url: Custom_host,
+                //     dataType: "xml",
+                //     success: parseXml
+                // });
+                //
+                // function parseXml(xml){
+                //     $(xml).find("Capability").each(function(){
+                //         var name = $(this).text();
+                //         console.log( name);
+                //         });
+                //      };
 
         //     function loadDoc() {
         //         var formatter = new  ol.format.WMSCapabilities();

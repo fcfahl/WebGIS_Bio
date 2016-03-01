@@ -11,16 +11,8 @@
     <meta name="author" content="Fernando Fahl">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <!-- Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
-    <!-- Angularjs    -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"> </script>
-    <!-- Bootstrap (must be before Jquery UI)-->
-    <script src="libs/bootstrap4/tether.min.js">       </script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"> </script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/simplex/bootstrap.min.css">
     <!-- Jquery UI-->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.theme.min.css">
     <!-- Font Awesome CSS-->
@@ -30,29 +22,29 @@
     <link rel="stylesheet" type="text/css" href="libs/leaflet_V0.7.7/leaflet.css">
     <!-- Openlayers - library to parse getCapabilities-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.0/ol.js">  </script>
-    <!-- leaflet plugins-->
+    <!-- leaflet plugins    -->
     <script src="libs/plugins/leaflet-providers-master/leaflet-providers.js"> </script>
     <script src="libs/plugins/sidebar-v2-master/js/leaflet-sidebar.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/sidebar-v2-master/css/leaflet-sidebar_CUSTOM.css"/>
     <script src="libs/plugins/Leaflet.ZoomBox-master/L.Control.ZoomBox.min.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/Leaflet.ZoomBox-master/L.Control.ZoomBox.css"/>
     <script src="libs/plugins/Leaflet.NavBar-master/src/Leaflet.NavBar.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/Leaflet.NavBar-master/src/Leaflet.NavBar.css"/>
     <script src="libs/plugins/Leaflet-MiniMap-master/src/Control.MiniMap.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/Leaflet-MiniMap-master/src/Control.MiniMap.css"/>
     <script src="libs/plugins/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.css"/>
     <script src="libs/plugins/Leaflet-IconLayers-master/src/iconLayers.js"> </script>
     <script src="libs/plugins/Leaflet-IconLayers-master/src/providers.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/Leaflet-IconLayers-master/src/iconLayers.css"/>
     <script src="libs/plugins/Leaflet.TileLegend-master/Leaflet.TileLegend.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/Leaflet.TileLegend-master/Leaflet.TileLegend.css"/>
     <script src="libs/plugins/erictheise-rrose-77e87f5/rrose-src.js"> </script>
-    <link rel="stylesheet" href="libs/plugins/erictheise-rrose-77e87f5/leaflet.rrose.css"/>
     <script src="libs/plugins/Leaflet-WFST-master/dist/Leaflet-WFST.min.js"> </script>
-    <script src="libs/plugins/Leaflet.ZoomLabel-master/src/L.Control.ZoomLabel.js"> </script>
     <script src="libs/plugins/Services2/layer/tile/Bing.js"> </script>
     <script src="libs/plugins/Services2/layer/tile/Google.js"> </script>
+    <link rel="stylesheet" href="libs/plugins/sidebar-v2-master/css/leaflet-sidebar_CUSTOM.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet.ZoomBox-master/L.Control.ZoomBox.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet.NavBar-master/src/Leaflet.NavBar.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet-MiniMap-master/src/Control.MiniMap.css"/>
+    <link rel="stylesheet" href="libs/plugins/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet-IconLayers-master/src/iconLayers.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet.TileLegend-master/Leaflet.TileLegend.css"/>
+    <link rel="stylesheet" href="libs/plugins/erictheise-rrose-77e87f5/leaflet.rrose.css"/>
+    <script src="libs/plugins/Leaflet.ZoomLabel-master/src/L.Control.ZoomLabel.js"> </script>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="styles/css/app.css">
   </head>
@@ -144,16 +136,47 @@
                   <div class="group">
                     <h3>Custom Layers</h3>
                     <div id="custom">
-                      <div class="input-group input-group-sm">
-                        <input type="text" id="wms_txt" class="form-control"><span class="input-group-btn">
-                          <button type="button" id="wms_btn" class="btn btn-primary btn"><span aria-hidden="true" class="glyphicon glyphicon-search">Add</span></button></span>
+                      
+                      
+                      <div class="wmsModal">
+                        <button type="button" data-toggle="modal" data-target="#modalWindow" id="modalButton" class="btn btn-primary cleanButton">Add WMS Layer</button>
+                        <div id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h3>Add WMS Layer</h3>
+                              </div>
+                              <div class="modal-body">
+                                <div class="wmsCapability"><span class="h5">Get Capabilities</span>
+                                  <input type="text" id="wms_capability" class="form-control">
+                                </div>
+                                <div class="wmsUrl"><span class="h5">WMS url link</span>
+                                  <input type="text" id="wms_url" class="form-control">
+                                </div>
+                                <div class="wmsButton">
+                                  <button type="button" id="wms_submit" class="btn btn-primary cleanButton">Submit</button>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <div class="wmsList">
+                                  <ul class="list-group"></ul>
+                                </div>
+                                <div class="wmsButtons">
+                                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                  <button type="button" id="wms_add" class="btn btn-primary">Add Selected Layers</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div id="wmsList">
+                      <div class="wms_custom">
                         <ul class="list-group"></ul>
                       </div>
                     </div>
                   </div>
                 </div>
+                
               </div>
               <div role="tabpanel" id="legend" aria-labelledby="legend-tab" class="tab-pane fade">
                 <div id="legend">
@@ -302,6 +325,21 @@
         <p>(c)fernando fahl, 2016</p>
       </footer>
     </div>
+    <!-- Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <!-- Angularjs    -->
+    
+    <!-- Jquery UI-->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"> </script>
+    <!-- Bootstrap (must be before Jquery UI)-->
+    <script src="libs/bootstrap4/tether.min.js">       </script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"> </script>
+    <!-- leaflet-->
+    
+    <!-- leaflet plugins-->
+    
+    
+    
     <!-- Custom Scripts-->
     <script src="custom/jquery.js">   </script>
     <script src="custom/leaflet.js">  </script>
