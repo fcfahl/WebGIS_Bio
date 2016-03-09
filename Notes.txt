@@ -96,3 +96,8 @@ https://pypi.python.org/pypi/OWSLib
 
 13 Enable CORS for localhost (not for production)
 http://stackoverflow.com/questions/22363192/cors-tomcat-geoserver
+http://stackoverflow.com/questions/12383109/access-control-allow-origin-in-tomcat
+
+
+http://gis.stackexchange.com/questions/34892/how-to-get-json-from-geoserver-using-ajax-request
+http://client.cors-api.appspot.com/client#?client_method=GET&client_credentials=false&server_enable=true&server_status=200&server_credentials=true&server_tabs=local

@@ -3,7 +3,7 @@
 // 2: using openlayers library: the output will be a stored as json
 // 3: using third parties libraries (e.g. https://github.com/w8r/wms-capabilities)
 
-$( document ).ready(function() {
+function WMS_layers (xmlFile) {
 
     var Custom_host = "http://localhost:8080/geoserver/wms?service=wms&version=1.3.0&request=GetCapabilities"
     var Custom_host = "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Zone_sismogenetiche_ZS9.map&service=wms&request=getCapabilities&version=1.3.0"
@@ -12,7 +12,7 @@ $( document ).ready(function() {
         // create HTML element
 
         var open_div = '<div id="' +  ID + '" class="' +  classN + '"  >',
-             li =  '<li><input type="checkbox" value="' + title  + '" autocomplete="off" data-layer="' + name  + '"data-title="' + title  + '"data-url="' + url  + '" class="wmsBox" id="' +  ID + '">',
+             li =  '<li><input type="checkbox" value="' + ID  + '" autocomplete="off" data-layer="' + name  + '"data-title="' + title  + '"data-url="' + url  + '" class="wmsBox" id="' +  ID + '">',
              label = '<label for="'  +  ID  + '"><span>'  +  title  +  '</span></label>',
              // include a hidden class to hide the delete button
              icon = '<a class="wms_delete" href="'  +  ref  + '"><span class="glyphicon glyphicon-remove-circle wms_delete hidden-xs"><br></span></a>';
@@ -100,7 +100,7 @@ $( document ).ready(function() {
                     width = 600,
                     height = 600,
                     format = "image/png",
-                    ID = "wms_" + title,
+                    ID = "wms_" + title.replace(/\s+/g, ''), //remove empty spaces
                     ref="#" + ID;
 
                 var getMap = createGetMap (request, version, name, bbox, width, height, CRS, format );
@@ -117,6 +117,8 @@ $( document ).ready(function() {
                  layers.push(item);
 
 
+				console.log("ID: " + ID);
+
           });
 
             // for(key in layers)
@@ -125,6 +127,7 @@ $( document ).ready(function() {
             // }
 
           console.log("%o", obj);
+
           return layers;
 
 
@@ -149,95 +152,21 @@ $( document ).ready(function() {
              var html = createHTML("wms_candidates",ID,name,title,ref,url);
              $(".wmsList").append(html);
 
-            //  console.log("layer: " + title);
+              console.log("layer: " + title);
            });
 
 
-        //   console.log("version: " + version);
-
         return layerList;
 
-     };
-
-     //  Add selected wms layers to Pannel
-      $("#wms_add" ).on('click', function ()
-      {
-
-        var checkedVals = $('.wmsBox:checkbox:checked').map(function() {
-            return this.value;
-        }).get();
+    };
 
 
-        $.each( checkedVals, function( index, value ){
+    // variable to hold the layer object
+    var layerObj = parseCapabilities(xmlFile);
 
-         //    Clone selected wms layers to pannel
-            var   ID = "#wms_" + value;
-             $('.glyphicon').removeClass( "hidden-xs" ).closest('span'); //remove hidden class to show the delete icon
-             $( ID ).clone().appendTo( ".wms_custom" );
+    return layerObj;
 
-             // console.log( "ID: " + ID);
-
-        });
-             // clean the wmlist to avoid duplicated IDs
-               $(".wmsList" ).empty();
-
-     });
-
-     // remove wms custon layer using delete icon
-     $('.wms_custom' ).on('click', '.wms_delete', function () {
-
-         var href = $(this).attr('href');
-         $(href).remove();
-         console.log( "remove " + href );
-     });
-
-     //  MODAL: add custom WMS layers
-      $("#wms_submit").on('click', function () {
-
-         //  Show footer after submit button is clicked
-         $(".modal-body").hide();
-         $(".modal-footer").show();
-
-         var wmsLink = $('#wms_capability').val();
-         console.log('wmsLink: ' + wmsLink);
-
-         // Get Layer names
-         // http://fuzzytolerance.info/blog/2012/03/06/2012-03-06-parsing-wms-getcapabilities-with-jquery/
-         $.ajax({
-             type: "GET",
-             url: wmsLink,
-             dataType: "xml",
-             success: function(xml) { var layers = parseCapabilities (xml);}
-             });
-
-
-
-
-     });
-
-
-// Not working... these functions are not being called - problably because they were dynamic generated
-
-     $(".wmsBox").prop('checked', function () {
-          console.log('ready: ' );
-     });
-
-     $(".wmsBox input[type='checkbox']").on('click', function (event) {
-         console.log('ready: ' );
-
-     });
-
-     $(".wmsBox").click(function(){
- console.log('ready: ' );
-     });
-
-     $(".wmsBox").change(function() {
-
-         console.log('ready: ' );
-     });
-
-
-});
+};
 
 
 
