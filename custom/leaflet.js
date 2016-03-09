@@ -147,10 +147,10 @@
 
     });
 
-
     // WMS Custom
 
     // var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
+    var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
 
     // var parser = new ol.format.WMSCapabilities(Custom_host);
 
