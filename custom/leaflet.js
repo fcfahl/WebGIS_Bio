@@ -68,84 +68,115 @@
 
 
     // LULC layers (WMS)
+    var server = 'http://localhost:8080/geoserver/LULC/wms',
+        workspace = "LULC:",
+        format = 'image/png',
+        transparent = true,
+        version ='1.3.0',
+        tiled = true,
+        CRS = "EPSG:3035",
+        bbox = "",
+        width ="" ,
+        height = "" ;
 
-    var host = 'http://localhost:8080/geoserver/LULC/wms';
+    var LULC_layers = ["NUTS0", "GLC_00","Corine_06", "Atlas_06", "GlobCover_09", "MODIS_10", "CCIESA_10", "GLand30_10"];
+    var LULC_styles = ["NUTS0", "raster","Corine_06", "Atlas_06", "raster", "raster", "raster", "raster"];
 
-    var NUTS0 = L.tileLayer.wms(host, {
-        layers: 'LULC:NUTS0',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        styles: 'NUTS0',
-        zIndex: "100",
-    });
+    // loop through LULC_Layers
+    $.each(LULC_layers, function (index, obj) {
 
-    var GLC_00 = L.tileLayer.wms(host, {
-        layers: 'LULC:GLC_00',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "30",
-    });
+        var title = LULC_layers[index],
+            id = title,
+            layer = workspace + title,
+            styles = LULC_styles[index],
+            zIndex = 100 - index;
 
-    var Corine_06 = L.tileLayer.wms(host, {
-        layers: 'LULC:Corine_06',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "29",
-    });
+        // Add parameters to object
+        wmsObj (id, title, server, version, layer, bbox, width, height, CRS, format, transparent, tiled, styles, zIndex)
 
-    var Atlas_06 = L.tileLayer.wms(host, {
-        layers: 'LULC:Atlas_06',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "28",
-        minZoom: 8
-    });
+        // Create leaflet variables for each layer
+        wmsLeaflet(title);
+
+      });
 
 
-    var GlobCover_09 = L.tileLayer.wms(host, {
-        layers: 'LULC:GlobCover_09',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "27",
-    });
-
-    var MODIS_10 = L.tileLayer.wms(host, {
-        layers: 'LULC:MODIS_10',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "26",
-    });
-
-    var CCIESA_10 = L.tileLayer.wms(host, {
-        layers: 'LULC:CCIESA_10',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "25",
-    });
-
-    var GLand30_10 = L.tileLayer.wms(host, {
-        layers: 'LULC:GLand30_10',
-        format: 'image/png',
-        transparent: true,
-        version: '1.3.0',
-        tiled:true,
-        zIndex: "24",
-
-    });
+    // var NUTS0 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:NUTS0',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     styles: 'NUTS0',
+    //     zIndex: "100",
+    // });
+    //
+    //     console.log(NUTS0);
+    //
+    // var GLC_00 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:GLC_00',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "30",
+    // });
+    //
+    // var Corine_06 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:Corine_06',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "29",
+    // });
+    //
+    // var Atlas_06 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:Atlas_06',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "28",
+    //     minZoom: 8
+    // });
+    //
+    //
+    // var GlobCover_09 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:GlobCover_09',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "27",
+    // });
+    //
+    // var MODIS_10 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:MODIS_10',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "26",
+    // });
+    //
+    // var CCIESA_10 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:CCIESA_10',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "25",
+    // });
+    //
+    // var GLand30_10 = L.tileLayer.wms(server, {
+    //     layers: 'LULC:GLand30_10',
+    //     format: 'image/png',
+    //     transparent: true,
+    //     version: '1.3.0',
+    //     tiled:true,
+    //     zIndex: "24",
+    //
+    // });
 
     // WMS Custom
 

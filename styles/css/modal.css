@@ -1,3 +1,14 @@
-
+@charset "UTF-8";
+.wms_candidates {
+  background: blue; }
+  .wms_candidates .wms_delete {
+    background: pink; }
+    .wms_candidates .wms_delete input[type="checkbox"] {
+      display: none; }
+    .wms_candidates .wms_delete input[type="checkbox"] + label:before {
+      font-family: "FontAwesome";
+      content: "";
+      display: inline-block;
+      background: pink; }
 
 /*# sourceMappingURL=modal.css.map */

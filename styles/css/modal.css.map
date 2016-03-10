@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": ";AACA,eAAe;EACX,UAAU,EAAE,IAAI;EAGhB,2BAAW;IACP,UAAU,EAAE,IAAI;IAEhB,kDAAsB;MAClB,OAAO,EAAE,IAAI;IAEjB,iEAAqC;MACjC,WAAW,EAAE,aAAa;MAC1B,OAAO,EAAE,GAAO;MAChB,OAAO,EAAE,YAAY;MACrB,UAAU,EAAE,IAAI",
+"sources": ["../scss/modal.sass"],
 "names": [],
 "file": "modal.css"
 }

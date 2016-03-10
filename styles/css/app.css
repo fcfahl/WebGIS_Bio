@@ -55,6 +55,9 @@ html, body {
 span {
   display: inline-block; }
 
+.icon-hide {
+  display: none; }
+
 body {
   font: 20px Arial, Helvetica, sans-serif;
   color: white; }
@@ -159,5 +162,17 @@ body {
     background: #2B3856;
     font-size: 0.45em;
     text-align: right; }
+
+.wms_candidates {
+  background: blue; }
+  .wms_candidates .wms_delete {
+    background: pink; }
+    .wms_candidates .wms_delete input[type="checkbox"] {
+      display: none; }
+    .wms_candidates .wms_delete input[type="checkbox"] + label:before {
+      font-family: "FontAwesome";
+      content: "";
+      display: inline-block;
+      background: pink; }
 
 /*# sourceMappingURL=app.css.map */
