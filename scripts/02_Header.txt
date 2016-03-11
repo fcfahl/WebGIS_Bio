@@ -1,4 +1,0 @@
-<!--Header block-->
-	<div id="top-header">
-		<h1>Land Cover Maps of Europe</h1>
-	</div>

@@ -1,8 +1,0 @@
-.project
-.settings
-target
-.tern-project
-.*~
-*~
-.idea
-/bin/

@@ -1,3 +1,0 @@
-var Jsonix = {
-	singleFile : true
-};

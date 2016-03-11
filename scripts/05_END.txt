@@ -1,6 +1,0 @@
-	<!--Map block-->
-	<div id="map" class="sidebar-map"> </div>
-
-	<!--JScripts-->
-	<script type="text/javascript" language="JavaScript" src='./js/custom_leaflet.js'></script>
-	<script type="text/javascript" language="JavaScript" src='./js/custom_jquery.js'></script>

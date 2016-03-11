@@ -1,1 +1,0 @@
-Jsonix.Binding = {};

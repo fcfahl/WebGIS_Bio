@@ -1,24 +1,28 @@
 /*
-Error: Undefined variable: "$baseColor".
-        on line 24 of scss/decoration.sass
+Error: Undefined mixin 'linear-gradient'.
+        on line 28 of scss/decoration.sass, in `linear-gradient'
+        from line 28 of scss/decoration.sass
 
-19:     h5
-20:         font-size: 0.6em
-21: 
-22:     .container-fluid
-23:         header
-24:             background: $baseColor
-25:             text-align: center
-26:             border-bottom: solid white 0.5px
-27: 
-28:             .logo
-29:                 img
+23:     .container-fluid
+24:         header
+25:             // background: $baseColor
+26:             text-align: center
+27:             border-bottom: solid white 0.5px
+28:             @include linear-gradient(to top, red, orange)
+29:             .logo
+30:                 img
+31:                     padding-left: 5px
+32:                     height: 60px
+33:                     width: 65px
 
 Backtrace:
-scss/decoration.sass:24
-/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
+scss/decoration.sass:28:in `linear-gradient'
+scss/decoration.sass:28
+/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:349:in `block in visit_mixin'
+/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:98:in `block in with_mixin'
+/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:98:in `with_mixin'
+/var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:347:in `visit_mixin'
 /var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
 /var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
 /var/lib/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
@@ -90,4 +94,4 @@ scss/decoration.sass:24
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$baseColor\".\A         on line 24 of scss/decoration.sass\A \A 19:     h5\A 20:         font-size: 0.6em\A 21: \A 22:     .container-fluid\A 23:         header\A 24:             background: $baseColor\A 25:             text-align: center\A 26:             border-bottom: solid white 0.5px\A 27: \A 28:             .logo\A 29:                 img"; }
+  content: "Error: Undefined mixin 'linear-gradient'.\A         on line 28 of scss/decoration.sass, in `linear-gradient'\A         from line 28 of scss/decoration.sass\A \A 23:     .container-fluid\A 24:         header\A 25:             // background: $baseColor\A 26:             text-align: center\A 27:             border-bottom: solid white 0.5px\A 28:             @include linear-gradient(to top, red, orange)\A 29:             .logo\A 30:                 img\A 31:                     padding-left: 5px\A 32:                     height: 60px\A 33:                     width: 65px"; }
