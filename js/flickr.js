@@ -12,4 +12,4 @@ popupContent = function(data,markers) {
 // map.addLayer(jsonLayer);
 
 
-https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=78a6ce549b86483a335a3377a3765ef0&text=bus&lat=34.0194543&lon=-118.4911912&extras=geo,url_t,url_m&radius=20&radius_units=mi&per_page=20&jsoncallback=?
+// https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=78a6ce549b86483a335a3377a3765ef0&text=bus&lat=34.0194543&lon=-118.4911912&extras=geo,url_t,url_m&radius=20&radius_units=mi&per_page=20&jsoncallback=?

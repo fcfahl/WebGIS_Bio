@@ -1,12 +1,14 @@
     // zoom configuration
-    var map = L.map('map').setView([56, 20]);
+
+    var   southWest = L.latLng(31, -17.5),
+            northEast = L.latLng(72, 45),
+            centerView= L.latLng(56, 20),
+            zoomLevel = 4;
+
+    var map = L.map('map').setView(centerView, zoomLevel);
     // console.log('map:' + map)
 
-	map.fitBounds([
-		[36.5, -20],
-		[68, 60]
-	]);
-
+	map.fitBounds([southWest, northEast]);
 
     // Leaflet.ZoomBox-master plugin
     var control = L.control.zoomBox({
@@ -16,6 +18,9 @@
                 // className: "customClass"  // Class to use to provide icon instead of Font Awesome
     }).addTo(map);
 
+    // geotagged photos
+    var featureGroup = L.featureGroup([]).addTo(map);
+    	// var featureGroup = L.markerClusterGroup();
 
     // Leaflet.NavBar-master plugin
         L.control.navbar().addTo(map);

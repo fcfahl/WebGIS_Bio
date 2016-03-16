@@ -8,12 +8,12 @@ Error: Undefined mixin 'linear-gradient'.
 25:             // background: $baseColor
 26:             text-align: center
 27:             border-bottom: solid white 0.5px
-28:             @include linear-gradient(to top, red, orange)
-29:             .logo
-30:                 img
-31:                     padding-left: 5px
-32:                     height: 60px
-33:                     width: 65px
+28:             @include linear-gradient(to top, blue, black)
+29: 
+30:             .logo
+31:                 img
+32:                     padding-left: 5px
+33:                     height: 60px
 
 Backtrace:
 scss/decoration.sass:28:in `linear-gradient'
@@ -94,4 +94,4 @@ scss/decoration.sass:28
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'linear-gradient'.\A         on line 28 of scss/decoration.sass, in `linear-gradient'\A         from line 28 of scss/decoration.sass\A \A 23:     .container-fluid\A 24:         header\A 25:             // background: $baseColor\A 26:             text-align: center\A 27:             border-bottom: solid white 0.5px\A 28:             @include linear-gradient(to top, red, orange)\A 29:             .logo\A 30:                 img\A 31:                     padding-left: 5px\A 32:                     height: 60px\A 33:                     width: 65px"; }
+  content: "Error: Undefined mixin 'linear-gradient'.\A         on line 28 of scss/decoration.sass, in `linear-gradient'\A         from line 28 of scss/decoration.sass\A \A 23:     .container-fluid\A 24:         header\A 25:             // background: $baseColor\A 26:             text-align: center\A 27:             border-bottom: solid white 0.5px\A 28:             @include linear-gradient(to top, blue, black)\A 29: \A 30:             .logo\A 31:                 img\A 32:                     padding-left: 5px\A 33:                     height: 60px"; }

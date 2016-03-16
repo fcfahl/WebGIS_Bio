@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="libs/leaflet_V0.7.7/leaflet.css">
     <!-- Openlayers - library to parse getCapabilities-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.0/ol.js">  </script>
+    <!-- Panoraimo API-->
+    <!-- Panoraimo plugin-->
     <!-- leaflet plugins    -->
     <script src="libs/plugins/leaflet-providers-master/leaflet-providers.js"> </script>
     <script src="libs/plugins/sidebar-v2-master/js/leaflet-sidebar.js"> </script>
@@ -36,6 +38,8 @@
     <script src="libs/plugins/Leaflet-WFST-master/dist/Leaflet-WFST.min.js"> </script>
     <script src="libs/plugins/Services2/layer/tile/Bing.js"> </script>
     <script src="libs/plugins/Services2/layer/tile/Google.js"> </script>
+    <script src="libs/plugins/Leaflet.markercluster/dist/leaflet.markercluster-src.js"> </script>
+    <script src="libs/plugins/Leaflet.ZoomLabel-master/src/L.Control.ZoomLabel.js"> </script>
     <link rel="stylesheet" href="libs/plugins/sidebar-v2-master/css/leaflet-sidebar_CUSTOM.css"/>
     <link rel="stylesheet" href="libs/plugins/Leaflet.ZoomBox-master/L.Control.ZoomBox.css"/>
     <link rel="stylesheet" href="libs/plugins/Leaflet.NavBar-master/src/Leaflet.NavBar.css"/>
@@ -44,7 +48,8 @@
     <link rel="stylesheet" href="libs/plugins/Leaflet-IconLayers-master/src/iconLayers.css"/>
     <link rel="stylesheet" href="libs/plugins/Leaflet.TileLegend-master/Leaflet.TileLegend.css"/>
     <link rel="stylesheet" href="libs/plugins/erictheise-rrose-77e87f5/leaflet.rrose.css"/>
-    <script src="libs/plugins/Leaflet.ZoomLabel-master/src/L.Control.ZoomLabel.js"> </script>
+    <link rel="stylesheet" href="libs/plugins/Leaflet.markercluster/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="libs/plugins/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="styles/css/app.css">
   </head>
@@ -136,8 +141,6 @@
                   <div class="group">
                     <h3>Custom Layers</h3>
                     <div id="custom">
-                      
-                      
                       <div class="wmsModal">
                         <button type="button" data-toggle="modal" data-target="#modalWindow" id="modalButton" class="btn btn-primary cleanButton">Add WMS Layer</button>
                         <div id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
@@ -149,9 +152,6 @@
                               <div class="modal-body">
                                 <div class="wmsCapability"><span class="h5">Get Capabilities</span>
                                   <input type="text" id="wms_capability" class="form-control">
-                                </div>
-                                <div class="wmsUrl"><span class="h5">WMS url link</span>
-                                  <input type="text" id="wms_url" class="form-control">
                                 </div>
                                 <div class="wmsButton">
                                   <button type="button" id="wms_submit" class="btn btn-primary cleanButton">Submit</button>
@@ -171,72 +171,56 @@
                           </div>
                         </div>
                       </div>
-                      <div class="wms_custom">
+                      <div class="wms_custom">           
                         <ul class="list-group"></ul>
                       </div>
+                      <div class="wmsModal">
+                        <button type="button" data-toggle="modal" data-target="#modalPhoto" id="modalButton" class="btn btn-primary cleanButton">Add Geo-tagged images</button>
+                        <div id="modalPhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
+                          <div class="modal-dialog">
+                            <div class="modal-content modal-photo">
+                              <div class="modal-header">
+                                <h3>Add Services</h3>
+                              </div>
+                              <div class="modal-body">            
+                                <div class="photoWeb col-xs-4 col-sm-4">
+                                  <div data-toggle="buttons" class="btn-group-vertical">
+                                    <label value="addFlickr" class="btn btn-primary btn-photo">Flickr<i class="icon fa ">
+                                        <input type="checkbox" id="addFlickr" autocomplete="off"></i></label>
+                                    <label value="addPanoraimo" class="btn btn-primary btn-photo">Panoraimo<i class="icon fa ">
+                                        <input type="checkbox" id="addPanoraimo" autocomplete="off"></i></label>
+                                    <label value="addGeograph" class="btn btn-primary btn-photo">Geograph<i class="icon fa ">
+                                        <input type="checkbox" id="addGeograph" autocomplete="off"></i></label>
+                                  </div>
+                                </div>
+                                <div class="photoList col-xs-8 col-sm-8">
+                                  <form class="form-inline">
+                                    <div class="form-group">
+                                      <label for="photo_query">Search criteria</label>
+                                      <input type="text" id="photo_query" placeholder="Search criteria" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="photo_number">Max. points</label>
+                                      <input type="text" id="photo_number" class="form-control">
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div class="modal-buttons"> 
+                                <button type="button" id="wms_close" data-dismiss="modal" class="btn btn-secondary ">Close</button>
+                                <button type="button" id="wms_add" data-dismiss="modal" class="btn btn-primary">Add Selected Services</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="photo"></div>
                     </div>
                   </div>
                 </div>
-                
               </div>
               <div role="tabpanel" id="legend" aria-labelledby="legend-tab" class="tab-pane fade">
                 <div id="legend">
-                                  <div id="leg_GLC_00" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GLC_00" rel="0" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GLC_00" aria-expanded="true" aria-controls="leg_GLC_00" class="accordion-toggle">Global Land Cover (2000)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GLC_00" role="tabpanel" aria-labelledby="leg_GLC_00" class="panel-collapse collapse in"><img src="img/GLC_00.svg" alt="Global Land Cover (2000)"></div>
-                                  </div>
-                                  <div id="leg_Corine_06" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_Corine_06" rel="1" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_Corine_06" aria-expanded="true" aria-controls="leg_Corine_06" class="accordion-toggle">Corine (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_Corine_06" role="tabpanel" aria-labelledby="leg_Corine_06" class="panel-collapse collapse in"><img src="img/Corine_06.svg" alt="Corine (2006)"></div>
-                                  </div>
-                                  <div id="leg_Atlas_06" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_Atlas_06" rel="2" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_Atlas_06" aria-expanded="true" aria-controls="leg_Atlas_06" class="accordion-toggle">Urban Atlas (2006)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_Atlas_06" role="tabpanel" aria-labelledby="leg_Atlas_06" class="panel-collapse collapse in"><img src="img/Atlas_06.svg" alt="Urban Atlas (2006)"></div>
-                                  </div>
-                                  <div id="leg_GlobCover_09" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GlobCover_09" rel="3" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GlobCover_09" aria-expanded="true" aria-controls="leg_GlobCover_09" class="accordion-toggle">GlobCover (2009)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GlobCover_09" role="tabpanel" aria-labelledby="leg_GlobCover_09" class="panel-collapse collapse in"><img src="img/GlobCover_09.svg" alt="GlobCover (2009)"></div>
-                                  </div>
-                                  <div id="leg_MODIS_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_MODIS_10" rel="4" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_MODIS_10" aria-expanded="true" aria-controls="leg_MODIS_10" class="accordion-toggle">MODIS (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_MODIS_10" role="tabpanel" aria-labelledby="leg_MODIS_10" class="panel-collapse collapse in"><img src="img/MODIS_10.svg" alt="MODIS (2010)"></div>
-                                  </div>
-                                  <div id="leg_CCIESA_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_CCIESA_10" rel="5" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_CCIESA_10" aria-expanded="true" aria-controls="leg_CCIESA_10" class="accordion-toggle">Land Cover CCI (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_CCIESA_10" role="tabpanel" aria-labelledby="leg_CCIESA_10" class="panel-collapse collapse in"><img src="img/CCIESA_10.svg" alt="Land Cover CCI (2010)"></div>
-                                  </div>
-                                  <div id="leg_GLand30_10" role="tablist" aria-multiselectable="true" class="leg">
-                                    <div class="panel panel-default">
-                                      <div role="tab" id="leg_GLand30_10" rel="6" class="panel-heading collapsed">
-                                        <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#leg_col_GLand30_10" aria-expanded="true" aria-controls="leg_GLand30_10" class="accordion-toggle">Global Land Cover 30m (2010)</a></h3>
-                                      </div>
-                                    </div>
-                                    <div id="leg_col_GLand30_10" role="tabpanel" aria-labelledby="leg_GLand30_10" class="panel-collapse collapse in"><img src="img/GLand30_10.svg" alt="Global Land Cover 30m (2010)"></div>
-                                  </div>
                 </div>
               </div>
               <div role="tabpanel" id="info" aria-labelledby="info-tab" class="tab-pane fade">
@@ -277,6 +261,5 @@
     <script src="js/jquery.js">   </script>
     <script src="js/leaflet.js">  </script>
     <script src="js/map.js"> </script>
-    <script src="js/flickr.js"> </script>
   </body>
 </html>

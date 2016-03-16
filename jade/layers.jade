@@ -8,21 +8,12 @@ include mixins
     .group
         h3='Custom Layers'
         #custom
-            //- .input-group.input-group-sm
-            //-     input(type="text" class="form-control" id="wms_txt")
-            //-     span(class="input-group-btn")
-            //-         button(class="btn btn-primary btn" type="button" id="wms_btn")
-            //-             span(class="glyphicon glyphicon-search"  aria-hidden="true")="Add"
-    
-
                 
-            include modal
+            include modal-wms
             
-            .wms_custom
-                //- a(href="#")
-                //-     span(class="glyphicon glyphicon-remove-circle wms_delete")
-            
+            .wms_custom            
                 ul(class="list-group")
-//- http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_pericolosita.map
-
             
+            include modal-photo
+            
+            .photo

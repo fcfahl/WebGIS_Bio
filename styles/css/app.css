@@ -432,9 +432,9 @@ body {
   body .container-fluid header {
     text-align: center;
     border-bottom: solid white 0.5px;
-    background-color: red;
-    background-image: -webkit-linear-gradient(bottom, red, orange);
-    background-image: linear-gradient(to top,red, orange); }
+    background-color: blue;
+    background-image: -webkit-linear-gradient(bottom, blue, black);
+    background-image: linear-gradient(to top,blue, black); }
     body .container-fluid header .logo img {
       padding-left: 5px;
       height: 60px;
@@ -454,7 +454,7 @@ body {
       body .container-fluid #main #side .pannel h3 {
         font-size: 0.7em; }
       body .container-fluid #main #side .pannel label {
-        font-size: 0.7em; }
+        font-size: 0.8em; }
       body .container-fluid #main #side .pannel #accordion .ui-accordion, body .container-fluid #main #side .pannel #accordion .ui-accordion-content {
         padding: 10px;
         margin: 0;
@@ -523,7 +523,56 @@ body {
     font-size: 0.45em;
     text-align: right; }
 
-.wms_delete {
-  background: pink; }
+.wms_custom {
+  clear: both;
+  float: left; }
+  .wms_custom .wms_candidates {
+    margin-bottom: 0;
+    float: none;
+    position: relative;
+    padding-bot: 0; }
+    .wms_custom .wms_candidates input {
+      padding-top: 50px;
+      vertical-align: middle;
+      display: block;
+      left: 0px;
+      position: absolute; }
+    .wms_custom .wms_candidates label {
+      display: block;
+      text-align: left;
+      margin-left: 20px;
+      width: 220px; }
+      .wms_custom .wms_candidates label span {
+        vertical-align: middle;
+        font-size: 1.2em; }
+    .wms_custom .wms_candidates .wms_delete {
+      display: block;
+      left: 245px;
+      position: absolute;
+      vertical-align: middle;
+      padding-top: 10px; }
+
+.modal-photo {
+  width: 450px; }
+  .modal-photo .modal-body {
+    height: 200px; }
+    .modal-photo .modal-body .photoWeb {
+      padding-left: 14px;
+      padding-top: 20px; }
+      .modal-photo .modal-body .photoWeb .btn-group-vertical {
+        display: inline; }
+        .modal-photo .modal-body .photoWeb .btn-group-vertical i {
+          position: absolute;
+          text-align: left;
+          left: 3px;
+          vertical-align: middle;
+          padding-top: 3px; }
+        .modal-photo .modal-body .photoWeb .btn-group-vertical label {
+          padding-left: 18px;
+          width: 120px; }
+        .modal-photo .modal-body .photoWeb .btn-group-vertical input {
+          display: none; }
+  .modal-photo .modal-buttons {
+    padding: 20px; }
 
 /*# sourceMappingURL=app.css.map */

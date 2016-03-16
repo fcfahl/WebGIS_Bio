@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 50px;
+    float: left;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+ 
+<div id="images"></div>
+ 
+<script>
+
+function parseJSON(data){
+
+  
+
+  $.each(data.photos, function() {
+    console.log( this ); // server response
+  });
+
+
+
+};
+
+
+  var flickerAPI = "http://www.panoramio.com/map/get_panoramas.php?set=public&tag=forest&from=0&to=20&minx=-180&miny=-90&maxx=180&maxy=90&size=medium&mapfilter=true&callback=?";
+
+  $.ajax({
+    url: flickerAPI,
+ 
+    // The name of the callback parameter, as specified by the YQL service
+    jsonp: "callback",
+ 
+    // Tell jQuery we're expecting JSONP
+    dataType: "jsonp",
+ 
+    // Tell YQL what we want and that we want JSON
+    data: {
+      tag: "forest",
+      format: "json",
+    },
+ 
+    // Work with the response
+    success: function( response ) {
+      parseJSON(response);
+        
+    }
+  });
+
+
+</script>
+ 
+</body>
+</html>
