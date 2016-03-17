@@ -84,8 +84,9 @@
         width ="" ,
         height = "" ;
 
+    // there is a problem on geoserver to set up a custom style - it seems to shift the color classes for discrete colortables - for this reason it is been using only the defaul raster style
     var LULC_layers = ["NUTS0", "GLC_00","Corine_06", "Atlas_06", "GlobCover_09", "MODIS_10", "CCIESA_10", "GLand30_10"];
-    var LULC_styles = ["NUTS0", "raster","Corine_06", "Atlas_06", "raster", "raster", "raster", "raster"];
+    var LULC_styles = ["NUTS0", "raster","raster", "Atlas_06", "raster", "raster", "raster", "raster"];
 
     // loop through LULC_Layers
     $.each(LULC_layers, function (index, obj) {
@@ -103,6 +104,36 @@
         wmsLeaflet(title);
 
       });
+
+    //   WFS Implementation
+      //
+    //   var owsrootUrl = 'http://localhost:8080/geoserver/LULC/ows';
+      //
+    //   var defaultParameters = {
+    //       service : 'WFS',
+    //       version : '2.0.0',
+    //       request : 'GetFeature',
+    //       typeName : 'LULC:paris',
+    //       outputFormat : 'text/javascript',
+    //       format_options : 'callback:getJson',
+    //       SrsName : 'EPSG:3035'
+    //   };
+
+    //   var geojsonLayer = new L.GeoJSON();
+     //
+    //  function getJson(data) {
+    //      console.log("WFS works: ", data)
+    //      geojsonLayer.addData(data).addTo(map);
+    //  }
+     //
+    //  $.ajax({
+    //      url: "http://localhost:8080/geoserver/LULC/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=lulc:at002l_graz&maxFeatures=50&outputFormat=json&format_options=callback:getJson",
+    //      dataType: 'json',
+    //      jsonpCallback: 'getJson',
+    //      success: getJson,
+    //  });
+
+    //  map.addLayer(geojsonLayer);
 
 
     // var NUTS0 = L.tileLayer.wms(server, {
