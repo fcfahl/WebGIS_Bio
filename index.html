@@ -60,12 +60,6 @@
         <div class="title"> 
           <h2>Land Cover Maps of Europe</h2>
         </div>
-        <div class="menu">                   
-          <li class="nav-item dropdown"> <a data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Options</a>
-            <div aria-labelledby="Preview" class="dropdown-menu"><a href="#" class="dropdown-item">Dropdown Link 1</a><a href="#" class="dropdown-item">Dropdown Link 2</a><a href="#" class="dropdown-item">Dropdown Link 3</a>
-            </div>
-          </li>
-        </div>
       </header>
       <div id="main">
         <div id="side">
@@ -141,8 +135,15 @@
                   <div class="group">
                     <h3>Custom Layers</h3>
                     <div id="custom">
+                      <div role="group" aria-label="..." class="btn-group btn-group-justified"> 
+                        <div role="group" class="btn-group">
+                          <button type="button" data-toggle="modal" data-target="#modalWindow" id="modalButton" class="btn btn-primary cleanButton">WMS Layer</button>
+                        </div>
+                        <div role="group" class="btn-group">
+                          <button type="button" data-toggle="modal" data-target="#modalPhoto" id="modalButton" class="btn btn-primary cleanButton">Photos</button>
+                        </div>
+                      </div>
                       <div class="wmsModal">
-                        <button type="button" data-toggle="modal" data-target="#modalWindow" id="modalButton" class="btn btn-primary cleanButton">Add WMS Layer</button>
                         <div id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -171,11 +172,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="wms_custom">           
-                        <ul class="list-group"></ul>
-                      </div>
                       <div class="wmsModal">
-                        <button type="button" data-toggle="modal" data-target="#modalPhoto" id="modalButton" class="btn btn-primary cleanButton">Add Geo-tagged images</button>
                         <div id="modalPhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
                           <div class="modal-dialog">
                             <div class="modal-content modal-photo">
@@ -213,6 +210,9 @@
                             </div>
                           </div>
                         </div>
+                      </div>
+                      <div class="wms_custom">           
+                        <ul class="list-group"></ul>
                       </div>
                       <div class="photo"></div>
                     </div>

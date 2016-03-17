@@ -432,13 +432,16 @@ body {
   body .container-fluid header {
     text-align: center;
     border-bottom: solid white 0.5px;
-    background-color: blue;
-    background-image: -webkit-linear-gradient(bottom, blue, black);
-    background-image: linear-gradient(to top,blue, black); }
+    background-color: #2B3856;
+    background-image: -webkit-linear-gradient(, #2B3856, #2B3806);
+    background-image: linear-gradient(to bot,#2B3856, #2B3806); }
     body .container-fluid header .logo img {
       padding-left: 5px;
       height: 60px;
       width: 65px; }
+    body .container-fluid header .title h2 {
+      color: white;
+      font-weight: bold; }
   body .container-fluid #main {
     background: #eee; }
     body .container-fluid #main #side {
@@ -454,7 +457,7 @@ body {
       body .container-fluid #main #side .pannel h3 {
         font-size: 0.7em; }
       body .container-fluid #main #side .pannel label {
-        font-size: 0.8em; }
+        font-size: 0.65em; }
       body .container-fluid #main #side .pannel #accordion .ui-accordion, body .container-fluid #main #side .pannel #accordion .ui-accordion-content {
         padding: 10px;
         margin: 0;
