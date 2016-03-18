@@ -115,7 +115,9 @@ $( document ).ready(function() {
      // Drag and Drop layers
      $( "#lulc" ).sortable({
 
+
          update: function (e, ui) {
+            console.clear();
             $("#lulc div").each(function (i, elm) {
 
             var name = ($(this).attr('id')),
@@ -124,6 +126,15 @@ $( document ).ready(function() {
                  ID_table = ("#tbl_" + name),
                  ID_opacity = ("#opy_" + name),
                  index_ID = (100 - index);
+
+            // update Json object
+            window[name].options.zIndex = index_ID;
+            window[name].wmsParams.zIndex = index_ID;
+
+            console.log(window[name].wmsParams.layers, " : ",  window[name].wmsParams.zIndex);
+
+            window[name].setZIndex(index_ID);
+
 
                 //  console.log("index: " +  index);
                 //  console.log("ID_leg: " + ID_leg);
