@@ -1,8 +1,6 @@
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.4/jquery-ui.theme.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" type="text/css" href="libs/font-awesome-4.5.0/css/font-awesome.min.css">
+    <!-- DataTable plugin-->
+    <link rel="stylesheet" type="text/css" href="libs/DataTables-1.10.11/media/css/dataTables.bootstrap4.min.css">
     <!-- leaflet-->
     <script src="libs/leaflet_V0.7.7/leaflet.js">  </script>
     <link rel="stylesheet" type="text/css" href="libs/leaflet_V0.7.7/leaflet.css">
@@ -316,6 +316,457 @@
               </div>
               <div role="tabpanel" id="info" aria-labelledby="info-tab" class="tab-pane fade">
                 <div id="tables">
+                                  <div id="tbl_GLC_00" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_GLC_00" rel="0" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GLC_00" aria-expanded="true" aria-controls="tbl_GLC_00">Global Land Cover (2000)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_GLC_00" role="tabpanel" aria-labelledby="tbl2_GLC_00" class="panel-collapse collapse in">
+                                                      <table id="tbl3_GLC_00" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>GLC-2000</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>EC-JRC</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>2000</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Global</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>SPOT 4</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>4 Spectral Bands. Monthly to 3 monthly NDVI composites</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>1 km</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>Geographic coordinates - Datum WGS84</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Generally unsupervised classification</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>FAO LCCS (23 classes)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Statistical sampling</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>Overall accuracy of 68 %. The accuracy of the European sub product was not yet performed</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Free of charge for non-commercial use</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_Corine_06" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_Corine_06" rel="1" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_Corine_06" aria-expanded="true" aria-controls="tbl_Corine_06">Corine (2006)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_Corine_06" role="tabpanel" aria-labelledby="tbl2_Corine_06" class="panel-collapse collapse in">
+                                                      <table id="tbl3_Corine_06" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>Corine</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>EEA</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>1990, 2000, 2006 and 2012</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Europe</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>Landsat-5 MSS/TM (1990), Landsat-7 ETM (2000), SPOT-4/5 and IRS P6 LISS III (2006) and IRS P6 LISS III and RapidEye (2012)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>False-colour images + Ancillary documents</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>250 and 100 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>ETRS89 /  ETRS-LAEA (EPSG:3035)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Computer-aided interpretation methodology</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>1st level: 5 classes; 2nd level: 15 classes; 3th level: 44 classes</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Statistical sampling</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>CLC 2000: Average accuracy of 74.8 %; CLC 2006: Not checked; Land Cover Change 2000-2006: overall accuracy of 87.82%</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Re-use of content on the EEA website for commercial or non-commercial purposes is permitted free of charge, provided that the source is acknowledged</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_Atlas_06" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_Atlas_06" rel="2" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_Atlas_06" aria-expanded="true" aria-controls="tbl_Atlas_06">Urban Atlas (2006)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_Atlas_06" role="tabpanel" aria-labelledby="tbl2_Atlas_06" class="panel-collapse collapse in">
+                                                      <table id="tbl3_Atlas_06" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>European Urban Atlas</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>European Commission Directorate-General for Regional Policy and the Directorate-General for Enterprise and Industry with the support of the European Space Agency and the European Environment Agency</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>2005-2007</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Europe</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>Earth Observation (EO) data with 2.5 m spatial resolution multispectral or pan-sharpened (multispectral merged with panchromatic) data</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>Earth Observation (EO) data&lt;br&gt;Topographic Maps at a scale of 1: 50 000 or larger&lt;br&gt;COTS navigation data for the road network</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Ancillary data</th>
+                                                            <th>COTS navigation data: points of interest, land use, land cover, water areas&lt;br&gt;Google Earth (only for interpretation, not for delineation)&lt;br&gt;Local city maps&lt;br&gt;Local zoning data&lt;br&gt;Field check (on-site visit)&lt;br&gt;Very high resolution imagery (better than 1 m ground resolution, e.g. aerial photographs)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>ETRS89 /  ETRS-LAEA (EPSG:3035)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>Thematic classes based on CORINE LC nomenclature and GUS Legend</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Thematic accuracy (in %)</th>
+                                                            <th>Minimum overall accuracy for level 1 class 1 “Artificial surfaces”: 85%&lt;br&gt;Minimum overall accuracy (all classes): 80%</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Positional Accuracy</th>
+                                                            <th>+ / - 5 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Unless otherwise indicated, re-use of content on the EEA website for commercial or non-commercial purposes is permitted free of charge, provided that the source is acknowledged</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_GlobCover_09" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_GlobCover_09" rel="3" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GlobCover_09" aria-expanded="true" aria-controls="tbl_GlobCover_09">GlobCover (2009)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_GlobCover_09" role="tabpanel" aria-labelledby="tbl2_GlobCover_09" class="panel-collapse collapse in">
+                                                      <table id="tbl3_GlobCover_09" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>GlobCover</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>ESA</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>2004-2006 and 2009</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Global</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>ENVISAT</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>13 Spectral Bands. Bi-monthly from 10 day composites</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>300 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>Plate-Carrée with a Geographic Lat/Lon representation</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Flexible classification using local/regional expertise</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>FAO LCCS (23 classes)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Statistical sampling / Expert’s judgement</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>Kappa coefficient of 0.656</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Free access for educational and/or scientific purposes</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_MODIS_10" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_MODIS_10" rel="4" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_MODIS_10" aria-expanded="true" aria-controls="tbl_MODIS_10">MODIS (2010)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_MODIS_10" role="tabpanel" aria-labelledby="tbl2_MODIS_10" class="panel-collapse collapse in">
+                                                      <table id="tbl3_MODIS_10" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>MODIS</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>USGS</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>2001-2012</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Global</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>Terra MODIS</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>7 Spectral Bands</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>500 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>Sinusoidal</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Supervised decision-tree classifier, neural networks</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>MODIS land IGBP (20 classes)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Statistical sampling / Confusion matrices, confidence values</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>Overall accuracy of 74.80 %</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>No restrictions on subsequent use, sale, or redistribution</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_CCIESA_10" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_CCIESA_10" rel="5" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_CCIESA_10" aria-expanded="true" aria-controls="tbl_CCIESA_10">Land Cover CCI (2010)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_CCIESA_10" role="tabpanel" aria-labelledby="tbl2_CCIESA_10" class="panel-collapse collapse in">
+                                                      <table id="tbl3_CCIESA_10" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>LC-CCI</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>ESA / UCL-Geomatics</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>5-year epochs centered on 2000, 2005 and 2010</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Global</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>AVHRR, SPOT-VGT, MERIS FR and RR</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>13 of 15 MERIS spectral channels. 7-day compositing period</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>300 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>Plate-Carrée with a Geographic Lat/Lon representation</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Unsupervised classification chain + machine learning classification</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>UN LCCS (22 classes)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Statistical sampling / Expert’s judgement</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>Overall accuracy between 73.2 % and 74.1 %</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Free access for educational and/or scientific purposes</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="tbl_GLand30_10" role="tablist" aria-multiselectable="true" class="tbl">
+                                    <div class="panel panel-default">
+                                      <div role="tab" id="tbl2_GLand30_10" rel="6" class="panel-heading collapsed">
+                                        <h3 class="panel-title">                   <a data-toggle="collapse" data-parent="#accordion" href="#tbl_col_GLand30_10" aria-expanded="true" aria-controls="tbl_GLand30_10">Global Land Cover 30m (2010)</a></h3>
+                                      </div>
+                                    </div>
+                                    <div id="tbl_col_GLand30_10" role="tabpanel" aria-labelledby="tbl2_GLand30_10" class="panel-collapse collapse in">
+                                                      <table id="tbl3_GLand30_10" cellspacing="0" width="50%" class="table table-sm table-striped table-bordered">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Dataset</th>
+                                                            <th>GlobeLand30</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Institution</th>
+                                                            <th>NGCC</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Temporal coverage</th>
+                                                            <th>12000 and 2010</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Coverage</th>
+                                                            <th>Global</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Sensor</th>
+                                                            <th>Landsat (TM, ETM+), HJ-1</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Input Data</th>
+                                                            <th>Multispectral images + Ancillary documents</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Spatial Resolution</th>
+                                                            <th>30 m</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Native Coordinate System</th>
+                                                            <th>UTM WGS84 (multiple zones)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Technique</th>
+                                                            <th>Pixel-object-knowledge (POK) based classification approach</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Classification Scheme</th>
+                                                            <th>10 land cover types</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Validation</th>
+                                                            <th>Third-party experts with a two-rank sampling strategy. Confusion Matrix and Derived Indexes for Italy region</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Accuracy</th>
+                                                            <th>Overall accuracy of 80.33 % and Kappa coefficient of  0.75 (2010). In Italy, the overall accuracy vary between  81% and 92% (compared to 5 Corine LC classes) and between  62% and 81% (compared to Corine LC subclasses)</th>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>Use policy</th>
+                                                            <th>Information not available</th>
+                                                          </tr>
+                                                        </thead>
+                                                      </table>
+                                    </div>
+                                  </div>
                 </div>
               </div>
             </div>
@@ -341,6 +792,8 @@
     <script src="libs/bootstrap4/tether.min.js">       </script>
     <script src="libs/bootstrap4/bootstrap.min.js"> </script>
     <script src="libs/bootstrap4/tether.min.js">     </script>
+    <!-- DataTable plugin-->
+    <script src="libs/DataTables-1.10.11/media/js/dataTables.bootstrap4.min.js">  </script>
     <!-- leaflet-->
     
     <!-- leaflet plugins-->

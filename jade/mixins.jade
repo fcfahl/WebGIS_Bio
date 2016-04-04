@@ -98,27 +98,52 @@ mixin legend_boot(section,sort,layers)
                     input(id=ID_opy class="opy_slider slider" data-id=id type="range" min="0" max="1" step="0.1" value="1" autocomplete="off" onchange="updateOpacity(this)")                
                 
                 img(src=ref alt=NM width="280px")            
-            
+        
+ //- Workaround: not possible to convert string in object
+mixin mk_table (id, obj) 
+    - var table_ID = "tbl3_" + id
+    case obj
+        when "GLC_00"
+            -var layer = GLC_00
+        when "Corine_06"
+            -var layer = Corine_06
+        when "Atlas_06"
+            -var layer = Atlas_06
+        when "GlobCover_09"
+            -var layer = GlobCover_09            
+        when "MODIS_10"
+            -var layer = MODIS_10
+        when "CCIESA_10"
+            -var layer = CCIESA_10        
+        when "GLand30_10"
+            -var layer = GLand30_10    
+        default
+            -var layer = ""
+
+    table(id=table_ID class="table table-sm table-striped table-bordered" cellspacing="0" width="50%")
+        thead
+            each val, key in layer
+                tr
+                    th #{key}
+                    th #{val}
+                
 mixin table_boot(section,sort,layers)
     - var index = 0
+
     for name, id in layers
-        - var ID = "tbl_" + id
-        - var heading = "tbl_" + id
+        - var table = id
+        - var ID_table = "tbl_" + id
+        - var heading = "tbl2_" + id
         - var collapse = "tbl_col_" + id
         - var ref_collapse = "#tbl_col_" + id
         - var NM = name
         - var ref = "html/"  +   id  + ".html"
-        div(id=ID class="tbl" role="tablist" aria-multiselectable="true")
+        div(id=ID_table class="tbl" role="tablist" aria-multiselectable="true")
             .panel.panel-default
                 .panel-heading.collapsed(role="tab" id=heading rel="#{index++}")
                     h3.panel-title                    
-                        a(data-toggle="collapse" data-parent="#accordion" href=ref_collapse aria-expanded="true" aria-controls=ID)=NM        
+                        a(data-toggle="collapse" data-parent="#accordion" href=ref_collapse aria-expanded="true" aria-controls=ID_table)=NM        
             div(id=collapse class="panel-collapse collapse in" role="tabpanel" aria-labelledby=heading )
-                iframe(src=ref)
-                            
-mixin mk_table
-    .table.table-striped
-        thead
-            tr
-                th="Land Cover"
-                th="Corine"         
+                //- iframe(src=ref)
+                +mk_table(id, table)
+                //- include #{expertise} 
