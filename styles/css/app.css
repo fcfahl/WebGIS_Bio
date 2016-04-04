@@ -405,7 +405,7 @@ html, body {
           align-items: center;
           height: 30px; }
       html .container-fluid #main #map, body .container-fluid #main #map {
-        background: pink;
+        background: white;
         flex-grow: 1; }
     html .container-fluid footer, body .container-fluid footer {
       height: 15px; }
@@ -477,13 +477,15 @@ body {
       body .container-fluid #main #side .pannel #accordion .group #custom {
         font-size: 0.7em; }
         body .container-fluid #main #side .pannel #accordion .group #custom .wms {
-          background: pink;
+          background: white;
           height: 20px; }
         body .container-fluid #main #side .pannel #accordion .group #custom .list-group-item {
           font-size: 0.7em; }
       body .container-fluid #main #side .pannel .leg, body .container-fluid #main #side .pannel .tbl {
         display: none;
         padding: 0; }
+        body .container-fluid #main #side .pannel .leg .panel.panel-default, body .container-fluid #main #side .pannel .tbl .panel.panel-default {
+          margin: 0; }
         body .container-fluid #main #side .pannel .leg .panel-heading, body .container-fluid #main #side .pannel .tbl .panel-heading {
           padding: 0;
           border: solid white 0.5px;
@@ -511,6 +513,20 @@ body {
             margin-top: -10px; }
         body .container-fluid #main #side .pannel .leg .panel-heading a.collapsed:after, body .container-fluid #main #side .pannel .tbl .panel-heading a.collapsed:after {
           content: ""; }
+        body .container-fluid #main #side .pannel .leg .opy, body .container-fluid #main #side .pannel .tbl .opy {
+          padding-top: 5px; }
+          body .container-fluid #main #side .pannel .leg .opy .opy_title, body .container-fluid #main #side .pannel .tbl .opy .opy_title {
+            font-size: 0.6em;
+            text-align: center;
+            vertical-align: bottom;
+            padding: 5px 0 0 10px;
+            position: relative;
+            float: left;
+            width: 80px; }
+          body .container-fluid #main #side .pannel .leg .opy .opy_slider, body .container-fluid #main #side .pannel .tbl .opy .opy_slider {
+            position: relative;
+            float: left;
+            width: 60%; }
       body .container-fluid #main #side .pannel .tbl {
         display: none; }
       body .container-fluid #main #side .settings {

@@ -28,6 +28,8 @@ $( document ).ready(function() {
       }
     });
 
+
+
     // Syncronyse the expand button in all tabs
     function expand() {
         // Getter
@@ -160,4 +162,21 @@ $( document ).ready(function() {
                 console.warn('Multiple IDs #'+this.id);
         });
 
+
+
 });
+
+
+// Opacity parameter
+function updateOpacity(layer) {
+    var ID_layer = layer.getAttribute('data-id');
+    var myVar = eval(ID_layer);
+    var _leaflet_id = layer.id;
+
+
+        console.log ('Value: ' + layer.value + ', layer: ' + _leaflet_id + ', id: ' + ID_layer);
+    if (_leaflet_id) {
+        myVar.setOpacity(layer.value);
+    }
+
+};

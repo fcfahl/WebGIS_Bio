@@ -46,7 +46,7 @@ html, body {
           align-items: center;
           height: 30px; }
       html .container-fluid #main #map, body .container-fluid #main #map {
-        background: pink;
+        background: white;
         flex-grow: 1; }
     html .container-fluid footer, body .container-fluid footer {
       height: 15px; }

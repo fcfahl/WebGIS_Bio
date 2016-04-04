@@ -80,19 +80,24 @@ mixin accorde(section,sort,layers)
 mixin legend_boot(section,sort,layers)
     - var index = 0
     for name, id in layers
-        - var ID = "leg_" + id
-        - var heading = "leg_" + id
+        - var ID_leg = "leg_" + id
+        - var ID_opy = "opy_" + id
+        - var heading = "legH_" + id
         - var collapse = "leg_col_" + id
         - var ref_collapse = "#leg_col_" + id
         - var NM = name
         - var ref = "img/"  +   id  + ".svg"
-        div(id=ID class="leg" role="tablist" aria-multiselectable="true")
+        div(id=ID_leg class="leg" role="tablist" aria-multiselectable="true")
             .panel.panel-default
                 .panel-heading.collapsed(role="tab" id=heading rel="#{index++}")
                     h3.panel-title
-                        a(data-toggle="collapse" data-parent="#accordion" href=ref_collapse aria-expanded="true" aria-controls=ID class="accordion-toggle")=NM        
+                        a(data-toggle="collapse" data-parent="#accordion" href=ref_collapse aria-expanded="true" aria-controls=ID_leg class="accordion-toggle")=NM        
             div(id=collapse class="panel-collapse collapse in" role="tabpanel" aria-labelledby=heading )
-                img(src=ref alt=NM)
+                .opy
+                    .opy_title Opacity:
+                    input(id=ID_opy class="opy_slider slider" data-id=id type="range" min="0" max="1" step="0.1" value="1" autocomplete="off" onchange="updateOpacity(this)")                
+                
+                img(src=ref alt=NM width="280px")            
             
 mixin table_boot(section,sort,layers)
     - var index = 0
