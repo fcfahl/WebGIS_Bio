@@ -120,12 +120,12 @@ mixin mk_table (id, obj)
         default
             -var layer = ""
 
-    table(id=table_ID class="table table-sm table-striped table-bordered" cellspacing="0" width="50%")
-        thead
+    table(id=table_ID class="table table-striped table-bordered table-hover table-sm" cellspacing="0" width="50%")
+        tbody
             each val, key in layer
-                tr
-                    th #{key}
-                    th #{val}
+                tr(class="table_row")
+                    td #{key}
+                    td #{val}
                 
 mixin table_boot(section,sort,layers)
     - var index = 0

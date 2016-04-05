@@ -7,12 +7,14 @@
     function createHTML (classN, ID, name, title, ref, url){
         // create HTML element
 
-        var open_div = '<div id="' +  ID + '" class=" ' +  classN + '"  >',
+        var open_div = '<div id="' +  ID + '" class="draggable ' +  classN + '"  >',
              li =  '<li><input type="checkbox" value="' + ID  + '" autocomplete="off" class="wmsBox wms_Ignore" id="' +  ID + '">',
              label = '<label for="'  +  ID  + '"><span>'  +  title  +  '</span></label></li>',
              // include a hidden class to hide the delete button
             icon = '<a><span  href="'  +  ref  + '" value="' + ID  + '" class="glyphicon glyphicon-remove-circle wms_delete hidden-xs"><br></span></a>',
             close_div = '</div>',
+        
+
             html = open_div + li + label + icon + close_div;
 
         return html;
