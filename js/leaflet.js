@@ -20,7 +20,7 @@
 
     // geotagged photos
     var featureGroup = L.featureGroup([]).addTo(map);
-    	// var featureGroup = L.markerClusterGroup();
+        // var featureGroup = L.markerClusterGroup();
 
     // Leaflet.NavBar-master plugin
         L.control.navbar().addTo(map);

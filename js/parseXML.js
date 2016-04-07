@@ -11,9 +11,9 @@
              li =  '<li><input type="checkbox" value="' + ID  + '" autocomplete="off" class="wmsBox wms_Ignore" id="' +  ID + '">',
              label = '<label for="'  +  ID  + '"><span>'  +  title  +  '</span></label></li>',
              // include a hidden class to hide the delete button
-            icon = '<a><span  href="'  +  ref  + '" value="' + ID  + '" class="glyphicon glyphicon-remove-circle wms_delete hidden-xs"><br></span></a>',
+            icon = '<a><span  href="'  +  ref  + '" value="' + ID  + '" class="glyphicon glyphicon-remove-circle wms_delete hidden-xs hidden-lg"><br></span></a>',
             close_div = '</div>',
-        
+
 
             html = open_div + li + label + icon + close_div;
 

@@ -54,7 +54,6 @@ $( document ).ready(function() {
     //  Add selected wms layers to Pannel
       $("#wms_add" ).on('click', function ()
       {
-
          // get the checked checkboxes
         var checkedVals = $('.wmsBox:checkbox:checked').map(function() {
             return this.value;
@@ -65,6 +64,7 @@ $( document ).ready(function() {
             //   Clone selected wms layers to pannel
             var   ID = "#" + value;
             $('.wms_delete').removeClass( "hidden-xs" ); //remove hidden class to show the delete icon
+            $('.wms_delete').removeClass( "hidden-lg" ); //remove hidden class to show the delete icon
             $('.wmsBox').removeClass( "wms_Ignore" ); //remove ignore class to allow toggling the layer
             $( ID ).clone().addClass( "wms_selected" ).appendTo( ".wms_custom" );
 

@@ -119,7 +119,7 @@ providers['Google_Image'] = {
     title: 'G. Imagery',
     icon: url_icons + 'Goolge_Imagery.png',
     layer: L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        attribution: '&copy; ....',
+        attribution: '&copy; Map data ©2015 Google',
         subdomains:['mt0','mt1','mt2','mt3'],
         maxZoom: 20
     })
@@ -129,7 +129,7 @@ providers['Google_Hybrid'] = {
     title: 'G. Hybrid ',
     icon: url_icons + 'Google_Hybrid.png',
     layer: L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
-        attribution: '&copy; .....',
+        attribution: '&copy; Map data ©2015 Google',
         subdomains:['mt0','mt1','mt2','mt3'],
         maxZoom: 20
     })
@@ -140,7 +140,7 @@ providers['Google_Terrain'] = {
     title: 'G. Terrain',
     icon: url_icons + 'google_Terrain.PNG',
     layer: L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-        attribution: '&copy; ....',
+        attribution: '&copy; Map data ©2015 Google',
         subdomains:['mt0','mt1','mt2','mt3'],
         maxZoom: 20
     })
@@ -151,8 +151,21 @@ providers['Google_Maps'] = {
     title: 'G. Maps',
     icon: url_icons + 'Google_Maps.PNG',
     layer: L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-        attribution: '&copy; ....',
+        attribution: '&copy; Map data ©2015 Google',
         subdomains:['mt0','mt1','mt2','mt3'],
         maxZoom: 20
     })
+};
+
+// ######## BING
+
+// for all possible values and explanations see "Template Parameters" in https://msdn.microsoft.com/en-us/library/ff701716.aspx
+var imagerySet = "Aerial"; // AerialWithLabels | Birdseye | BirdseyeWithLabels | Road
+
+var bing = new L.BingLayer("LfO3DMI9S6GnXD7d0WGs~bq2DRVkmIAzSOFdodzZLvw~Arx8dclDxmZA0Y38tHIJlJfnMbGq5GXeYmrGOUIbS2VLFzRKCK0Yv_bAl6oe-DOc", {type: imagerySet});
+
+providers['Bing'] = {
+    title: 'Bing',
+    icon: url_icons + 'Bing.png',
+    layer: bing,
 };
