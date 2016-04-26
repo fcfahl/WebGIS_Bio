@@ -89,7 +89,7 @@ $( document ).ready(function() {
         $(".modal-footer").show();
 
         var wmsLink = $('#wms_capability').val();
-        console.log('wmsLink: ' + wmsLink);
+        // console.log('wmsLink: ' + wmsLink);
 
         // Get Layer names
         // http://fuzzytolerance.info/blog/2012/03/06/2012-03-06-parsing-wms-getcapabilities-with-jquery/
@@ -106,7 +106,7 @@ $( document ).ready(function() {
 
     function addPhotos (type, pSearch, pNumber, map_width, map_height) {
 
-            console.log("type: ", type );
+            // console.log("type: ", type );
 
         if ( type === "addFlickr") {
             var flickrData = Get_flickr (pSearch, pNumber, map_width, map_height);
@@ -163,11 +163,11 @@ $( document ).ready(function() {
             var map_width = map.getBounds().getEast() - map.getBounds().getWest();
             var map_height = map.getBounds().getNorth() - map.getBounds().getSouth();
 
-            console.log (
-            'center:' + map.getCenter() +'\n'+
-            'width:' + map_width +'\n'+
-            'height:' + map_height +'\n'+
-            'size in pixels:' + map.getSize());
+            // console.log (
+            // 'center:' + map.getCenter() +'\n'+
+            // 'width:' + map_width +'\n'+
+            // 'height:' + map_height +'\n'+
+            // 'size in pixels:' + map.getSize());
 
             var pSearch = $('#photo_query').val();
             var pNumber= $('#photo_number').val();
@@ -204,7 +204,7 @@ $( document ).ready(function() {
 
         //
         if($(layerClicked).prop('checked')) {
-            console.log(layer,': checked' );
+            // console.log(layer,': checked' );
             addPhotos  (layer, pSearch, pNumber, map_width, map_height);
 
         } else {

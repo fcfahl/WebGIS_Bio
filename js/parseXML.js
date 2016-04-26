@@ -34,7 +34,7 @@
 
         // parse JSON
         var obj = jQuery.parseJSON( capability );
-         console.log("parsed XML: ",  obj);
+        //  console.log("parsed XML: ",  obj);
 
         // Request Parameters
         var version = obj.version,

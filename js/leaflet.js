@@ -107,64 +107,18 @@
 
     //   WFS Implementation
       //
-    //   var owsrootUrl = 'http://localhost:8080/geoserver/LULC/ows';
-      //
-    //   var defaultParameters = {
-    //       service : 'WFS',
-    //       version : '2.0.0',
-    //       request : 'GetFeature',
-    //       typeName : 'LULC:paris',
-    //       outputFormat : 'text/javascript',
-    //       format_options : 'callback:getJson',
-    //       SrsName : 'EPSG:3035'
-    //   };
+      var owsrootUrl = 'http://localhost:8080/geoserver/LULC/ows';
 
-    //   var geojsonLayer = new L.GeoJSON();
-     //
-    //  function getJson(data) {
-    //      console.log("WFS works: ", data)
-    //      geojsonLayer.addData(data).addTo(map);
-    //  }
-     //
-    //  $.ajax({
-    //      url: "http://localhost:8080/geoserver/LULC/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=lulc:at002l_graz&maxFeatures=50&outputFormat=json&format_options=callback:getJson",
-    //      dataType: 'json',
-    //      jsonpCallback: 'getJson',
-    //      success: getJson,
-    //  });
+      var defaultParameters = {
+          service : 'WFS',
+          version : '2.0.0',
+          request : 'GetFeature',
+          typeName : 'LULC:paris',
+          outputFormat : 'text/javascript',
+          format_options : 'callback:getJson',
+          SrsName : 'EPSG:3035'
+      };
 
-    //  map.addLayer(geojsonLayer);
-
-
-    // var NUTS0 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:NUTS0',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     styles: 'NUTS0',
-    //     zIndex: "100",
-    // });
-    //
-    //     console.log(NUTS0);
-    //
-    // var GLC_00 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:GLC_00',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "30",
-    // });
-    //
-    // var Corine_06 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:Corine_06',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "29",
-    // });
     //
     // var Atlas_06 = L.tileLayer.wms(server, {
     //     layers: 'LULC:Atlas_06',
@@ -176,58 +130,143 @@
     //     minZoom: 8
     // });
     //
-    //
-    // var GlobCover_09 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:GlobCover_09',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "27",
-    // });
-    //
-    // var MODIS_10 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:MODIS_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "26",
-    // });
-    //
-    // var CCIESA_10 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:CCIESA_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "25",
-    // });
-    //
-    // var GLand30_10 = L.tileLayer.wms(server, {
-    //     layers: 'LULC:GLand30_10',
-    //     format: 'image/png',
-    //     transparent: true,
-    //     version: '1.3.0',
-    //     tiled:true,
-    //     zIndex: "24",
-    //
-    // });
 
-    // WMS Custom
+//     var polyStyle = {
+//     "color": "#ffffff",
+//     "weight": 0,
+//     "fillOpacity": 0.75
+// };
+//
+//
+    var geojsonLayer = new L.GeoJSON();
 
-    // var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
-    var Custom_host = 'http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map&';
+          function getJson(data) {
+              console.log(data)
+              geojsonLayer.addData(data, {style: polyStyle});
+          }
 
-    // var parser = new ol.format.WMSCapabilities(Custom_host);
+          $.ajax({
+              url: "http://localhost:8080/geoserver/LULC/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=LULC:NUTS0&maxFeatures=50&outputFormat=json&format_options=callback:getJson",
+              dataType: 'json',
+              jsonpCallback: 'getJson',
+              success: getJson
+          });
 
-    // 	var CustomWMS = L.tileLayer.wms(Custom_host, {
-    // 		layers: 'GE.CARTAGEOLOGICA',
-    // 		format: 'image/png',
-    // 		transparent: true,
-    // 		version: '1.3.0',
-    // 		tiled:true,
-    //        srs:"EPSG:4326"
-    //    });
+          map.addLayer(geojsonLayer);
 
-    // console.log (CustomWMS);
+
+
+
+function onEachFeature(feature, layer) {
+    // does this feature have a property named dz?
+    if (feature.properties && feature.properties.Country) {
+        layer.bindPopup(feature.properties.Country);
+    }
+    layer.on({
+					//mouseover: highlightFeature,
+					//mouseout: resetHighlight,
+					click: clickfunction
+				});
+}
+
+
+
+
+
+
+
+// console.log (URL)
+
+
+
+
+
+// Create an empty layer where we will load the polygons
+        var featureLayer = new L.GeoJSON();
+        // Set a default style for out the polygons will appear
+        var defaultStyle = {
+            color: "#2262CC",
+            weight: 2,
+            opacity: 0.6,
+            fillOpacity: 0.1,
+            fillColor: "#2262CC"
+        };
+        // Define what happens to each polygon just before it is loaded on to
+        // the map. This is Leaflet's special way of goofing around with your
+        // data, setting styles and regulating user interactions.
+        var onEachFeature = function(feature, layer) {
+            // All we're doing for now is loading the default style.
+            // But stay tuned.
+            layer.setStyle(defaultStyle);
+        };
+        // Add the GeoJSON to the layer. `boundaries` is defined in the external
+        // GeoJSON file that I've loaded in the <head> of this HTML document.
+
+
+
+
+
+        var owsrootUrl = 'http://localhost:8080/geoserver/LULC/ows';
+
+        var defaultParameters = {
+            service : 'WFS',
+            version : '1.0.0',
+            request : 'GetFeature',
+            typeName : 'LULC:NUTS0',
+            outputFormat : 'text/javascript',
+            format_options : 'callback:getJson',
+            SrsName : 'EPSG:3035'
+        };
+
+        var parameters = L.Util.extend(defaultParameters);
+        var URL = owsrootUrl + L.Util.getParamString(parameters);
+
+        function getJson(data) {
+            // console.log(data)
+            var featureLayer = L.geoJson(data, {
+                // And link up the function to run when loading each feature
+                onEachFeature: onEachFeature
+            });
+        }
+
+        // Finally, add the layer to the map.
+        map.addLayer(featureLayer);
+
+        $.ajax({
+            url: URL,
+            dataType: 'jsonp',
+            jsonpCallback: 'getJson',
+            success: getJson
+        });
+
+
+
+        var parameters = L.Util.extend(defaultParameters);
+
+        var URL = owsrootUrl + L.Util.getParamString(parameters);
+
+        var ajax = $.ajax({
+            url : URL,
+            dataType : 'jsonp',
+            jsonpCallback : 'parseResponse',
+            success : WFSLayer
+        });
+
+        function WFSLayer(data) {
+
+        var fuffi= L.geoJson(data, {
+        style: function (feature) {
+            return {color: 'black',
+                fillColor: '#ff0000',
+                fillOpacity: 0.10};
+            }
+        }).addTo(map);
+
+         // loading indicator end
+         currentControl.removeClass('disabled');
+                        text.css('visibility', 'visible');
+                        indicator.css('display', 'none');
+            loadMore.fadeOut(2500);
+        // loading indicator end
+        map.fitBounds(fuffi.getBounds());
+        }

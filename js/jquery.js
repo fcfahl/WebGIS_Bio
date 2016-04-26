@@ -1,6 +1,9 @@
 $( document ).ready(function() {
     // console.log( "ready!" );
 
+    $.getJSON('js/db.json', function(json) {
+                        console.log(json);
+        });
 
     // Uncheck the checkboxes (problem in Firefox)
     $('input:checkbox').removeAttr('checked');

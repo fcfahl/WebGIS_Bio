@@ -107,7 +107,7 @@ function mapBBOX () {
 
 function displayFlickr (data){
 
-    console.log( "response: ", data ); // server response
+    // console.log( "response: ", data ); // server response
 
     var ico = new L.Icon({
         iconUrl: 'https://s.yimg.com/pw/images/goodies/white-small-circle.png',
@@ -127,7 +127,7 @@ function displayFlickr (data){
 
 
 
-    console.log( "url: ", url ); // server response
+    // console.log( "url: ", url ); // server response
 
         var popup = L.popup({
             maxWidth: 600,
@@ -167,7 +167,7 @@ function Get_flickr (pSearch, pNumber, map_width, map_height){
 };
 
 function displayPanoramio(data){
-    console.log( "panoramio: ", data ); // server response
+    // console.log( "panoramio: ", data ); // server response
 
     var ico = new L.Icon({
         iconUrl: 'http://www.panoramio.com/img/panoramio-marker.png',
