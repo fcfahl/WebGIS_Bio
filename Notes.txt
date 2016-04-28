@@ -101,3 +101,13 @@ http://stackoverflow.com/questions/12383109/access-control-allow-origin-in-tomca
 
 http://gis.stackexchange.com/questions/34892/how-to-get-json-from-geoserver-using-ajax-request
 http://client.cors-api.appspot.com/client#?client_method=GET&client_credentials=false&server_enable=true&server_status=200&server_credentials=true&server_tabs=local
+
+
+
+____
+
+Node windows
+npm install node-sass -g
+
+cd E:/12_GitHub/WebGIS_Bio/public/styles
+node-sass --watch scss/app.sass css/app.css
